@@ -1,8 +1,36 @@
-import { defineNuxtModule, installModule } from "@nuxt/kit";
+import {
+  addComponent,
+  createResolver,
+  defineNuxtModule,
+  installModule,
+} from "@nuxt/kit";
 
 export default defineNuxtModule({
-  async setup() {
+  async setup(_options, nuxt) {
     await installModule("@crystal-creations/animated-checkmark/nuxt");
     await installModule("@crystal-creations/pulsating-circle/nuxt");
+
+    const resolver = createResolver(import.meta.url);
+
+    nuxt.hook("i18n:registerModule", (register) => {
+      register({
+        langDir: resolver.resolve("./locales"),
+        locales: [
+          {
+            code: "en",
+            file: "en.json",
+          },
+          {
+            code: "de",
+            file: "de.json",
+          },
+        ],
+      });
+    });
+
+    await addComponent({
+      name: "CLicenseCard",
+      filePath: resolver.resolve("components/CLicenseCard.vue"),
+    });
   },
 });

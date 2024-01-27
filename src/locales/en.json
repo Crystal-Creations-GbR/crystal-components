@@ -1,0 +1,9 @@
+{
+  "crystal_components": {
+    "license_card": {
+      "author_not_specified": "author not specified",
+      "by_author": "by {author}",
+      "license": "License"
+    }
+  }
+}
