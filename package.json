@@ -1,0 +1,57 @@
+{
+  "name": "@crystal-creations/crystal-components",
+  "version": "0.0.0",
+  "type": "module",
+  "author": "Crystal Creations GbR and Johannes Huther",
+  "license": "MIT",
+  "description": "A vuetify based component library from crystal creations",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "serve": "vite preview"
+  },
+  "keywords": [
+    "vuetify",
+    "crystal-creations",
+    "components"
+  ],
+  "homepage": "https://github.com/Crystal-Creations-GbR/crystal-components",
+  "bugs": "https://github.com/Crystal-Creations-GbR/crystal-components/issues",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./styles": {
+      "default": "./dist/style.css"
+    },
+    "./nuxt": {
+      "default": "./src/nuxt.mjs"
+    }
+  },
+  "repository": "https://github.com/Crystal-Creations-GbR/crystal-components",
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@nuxt/kit": "^3.7.4",
+    "@types/node": "^20.7.1",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "sass": "^1.68.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.6.0",
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "@crystal-creations/animated-checkmark": "4.0.0-beta.5",
+    "@crystal-creations/pulsating-circle": "4.0.0-beta.1"
+  }
+}
