@@ -6,6 +6,7 @@
   "license": "MIT",
   "description": "A vuetify based component library from crystal creations",
   "scripts": {
+    "lint": "eslint src --max-warnings 0",
     "build": "vite build",
     "dev": "vite",
     "serve": "vite preview"
@@ -46,9 +47,15 @@
   "devDependencies": {
     "@mdi/js": "^7.4.47",
     "@nuxt/kit": "^3.7.4",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/i18n": "^8.0.0",
     "@types/node": "^20.7.1",
     "@vitejs/plugin-vue": "^4.3.4",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "prettier": "^3.0.3",
     "sass": "^1.68.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
