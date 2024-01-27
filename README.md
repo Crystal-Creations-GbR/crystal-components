@@ -24,7 +24,15 @@ A vuetify based component library from crystal creations.
 3. Add the component to your Vue component.
     ```vue
     <template>
-      <AnimatedCheckmark></AnimatedCheckmark>
+       <CLicenseCard
+         :software-info="{
+           name: '@crystal-creations/crystal-components',
+           version: 'v1.0.0',
+           repositoryLink:
+             'https://github.com/Crystal-Creations-GbR/crystal-components',
+           notice: 'MIT',
+         }"
+       ></CLicenseCard>
     </template>
     ```
 
@@ -35,19 +43,40 @@ A vuetify based component library from crystal creations.
 
 2. Add the following to your Vue `main.ts`.
     ```ts
-    import { AnimatedCheckmark } from "@crystal-creations/crystal-components";
+    import { CLicenseCard } from "@crystal-creations/crystal-components";
     import "@crystal-creations/crystal-components/styles";
     
     // ...
     
     const app = createApp(App)
     
-    app.component("AnimatedCheckmark", AnimatedCheckmark);
+    app.component("CLicenseCard", CLicenseCard);
     ```
 
 3. Add the component to your Vue component.
     ```vue
     <template>
-      <AnimatedCheckmark></AnimatedCheckmark>
+       <CLicenseCard
+         :software-info="{
+           name: '@crystal-creations/crystal-components',
+           version: 'v1.0.0',
+           repositoryLink:
+             'https://github.com/Crystal-Creations-GbR/crystal-components',
+           notice: 'MIT',
+         }"
+       ></CLicenseCard>
     </template>
     ```
+
+## Development
+There are two ways develop new or improve existing components:
+- Creating a new Story in the `stories/` directory for the new component and running storybook (recommended)
+- Developing inside a nuxt project
+  1. Install the module in a nuxt project using the instructions above
+  2. Run `yarn link` in the component repo
+  3. Run `yarn link @crystal-creations/crystal-components` in the nuxt project
+  4. You can now use components from the library with hot reloading etc.
+
+To add a new component:
+1. Create the component in `src/components`
+2. Add it to `src/index.ts` and `src/nuxt.mjs`
