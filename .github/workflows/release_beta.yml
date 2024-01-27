@@ -1,0 +1,16 @@
+name: Release current next version as beta version
+on: workflow_dispatch
+
+jobs:
+  sync_next_to_beta:
+    name: Push `next` to `beta`
+    runs-on: ubuntu-latest
+    steps:
+      # Warning: `next` MUST include all commits from `beta` otherwise the push will fail. This behaviour is not a bug and implemented by design.
+      - name: Push `next` to `beta`
+        uses: johannes-huther/sync-branch@v2
+        with:
+          source: "next"
+          target: "beta"
+          strategy: "fail"
+          github_token: ${{ secrets.GH_TOKEN }}

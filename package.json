@@ -7,9 +7,11 @@
   "description": "A vuetify based component library from crystal creations",
   "scripts": {
     "lint": "eslint src --max-warnings 0",
+    "semantic-release": "semantic-release",
     "build": "vite build",
     "dev": "vite",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "commitlint": "commitlint"
   },
   "keywords": [
     "vuetify",
@@ -45,18 +47,24 @@
     "vuetify": "^3.3.19"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.7.2",
+    "@commitlint/config-conventional": "^17.7.0",
     "@mdi/js": "^7.4.47",
     "@nuxt/kit": "^3.7.4",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/i18n": "^8.0.0",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/node": "^20.7.1",
     "@vitejs/plugin-vue": "^4.3.4",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-vue": "^9.17.0",
     "prettier": "^3.0.3",
     "sass": "^1.68.0",
+    "semantic-release": "^22.0.5",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-plugin-dts": "^3.6.0",
