@@ -1,0 +1,62 @@
+name: Build
+on:
+  push:
+    branches: [updates]
+  pull_request:
+    branches: [main, beta, updates, next]
+
+jobs:
+  yarn_build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Cache node modules
+        uses: actions/cache@v3
+        id: cache
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+      - name: Lint
+        run: yarn lint
+      - name: Build
+        run: yarn build
+
+  commitlint:
+    if: ${{ github.event_name == 'pull_request' }}
+    name: Lint commit messages
+    needs:
+      - yarn_build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Cache node modules
+        uses: actions/cache@v3
+        id: cache
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('yarn.lock') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+      - name: Checkout base
+        run: git checkout ${{ github.base_ref }}
+      - name: Checkout sha
+        run: git checkout ${{ github.head_ref }}
+      - name: Lint commit messages
+        run: yarn commitlint --from=${{ github.base_ref }} --to=${{ github.head_ref }}
