@@ -9,8 +9,11 @@ import {
   DefaultLocaleMessageSchema,
   LocaleMessages,
 } from "vue-i18n";
+import { addons } from "@storybook/preview-api";
+import { h } from "vue";
 import options from "../vuetify-options";
 import { withVuetifyTheme, DEFAULT_THEME } from "./withVuetifyTheme.decorator";
+import { themeLocaleModes } from "./modes";
 
 function loadLocaleMessages(): LocaleMessages<DefaultLocaleMessageSchema> {
   const locales = import.meta.glob("../src/locales/*.json", {
@@ -30,15 +33,14 @@ function loadLocaleMessages(): LocaleMessages<DefaultLocaleMessageSchema> {
   return messages;
 }
 
+const i18n = createI18n({
+  legacy: false,
+  messages: loadLocaleMessages(),
+});
+
 setup((app) => {
   app.use(createVuetify({ ...options, components }));
-  app.use(
-    createI18n({
-      legacy: false,
-      locale: "de",
-      messages: loadLocaleMessages(),
-    }),
-  );
+  app.use(i18n);
 });
 
 export const globalTypes = {
@@ -69,9 +71,49 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    viewport: {
+      viewports: {
+        mobile: { name: "Mobile", styles: { width: "360px", height: "720px" } },
+        tablet: {
+          name: "Tablet",
+          styles: { width: "1024px", height: "768px" },
+        },
+        desktop: {
+          name: "Desktop",
+          styles: { width: "1920px", height: "1080px" },
+        },
+      },
+    },
+    chromatic: {
+      modes: themeLocaleModes,
+    },
+  },
+};
+
+export const globals = {
+  locales: {
+    en: "English",
+    de: "Deutsch",
   },
 };
 
 export default preview;
 
-export const decorators = [withVuetifyTheme];
+const DEFAULT_LOCALE = "de";
+
+const withLocale = (
+  storyFn: () => any,
+  context: { globals: { locale: string }; args: {} },
+) => {
+  i18n.global.locale.value = context.globals.locale || DEFAULT_LOCALE;
+
+  return () => {
+    return h(storyFn(), { ...context.args });
+  };
+};
+
+export const decorators = [withVuetifyTheme, withLocale];
+
+addons.getChannel().on("LOCALE_CHANGED", (newLocale) => {
+  i18n.global.locale.value = newLocale;
+});
