@@ -2,7 +2,7 @@ module.exports = {
   extends: ["@commitlint/config-conventional"],
   parserPreset: "conventional-changelog-conventionalcommits",
   rules: {
-    "scope-enum": [2, "always", ["deps", "deps-dev"]],
+    "scope-enum": [2, "always", ["deps", "deps-dev", "de", "en"]],
     "type-enum": [
       2,
       "always",
