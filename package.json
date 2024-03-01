@@ -81,7 +81,7 @@
     "semantic-release": "^22.0.5",
     "storybook": "7.6.12",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9",
+    "vite": "^5.1.4",
     "vite-plugin-dts": "^3.6.0",
     "vue": "^3.0.0",
     "vue-i18n": "^9.9.1",
