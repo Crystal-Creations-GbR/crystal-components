@@ -40,5 +40,9 @@ export default defineNuxtModule({
       name: "CSnackbar",
       filePath: resolver.resolve("components/CSnackbar.vue"),
     });
+    await addComponent({
+      name: "CSnackbarManager",
+      filePath: resolver.resolve("components/CSnackbarManager.vue"),
+    });
   },
 });
