@@ -32,5 +32,9 @@ export default defineNuxtModule({
       name: "CLicenseCard",
       filePath: resolver.resolve("components/CLicenseCard.vue"),
     });
+    await addComponent({
+      name: "CItemListGroup",
+      filePath: resolver.resolve("components/CItemListGroup.vue"),
+    });
   },
 });
