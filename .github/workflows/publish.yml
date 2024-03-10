@@ -1,7 +1,7 @@
 name: Build and publish
 on:
   push:
-    branches: [main, beta, next]
+    branches: [main, beta]
   release:
     types:
       - published
@@ -32,7 +32,7 @@ jobs:
         run: yarn build
 
   semantic-release:
-    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta' || github.ref == 'refs/heads/next' }}
+    if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta' }}
     name: Create a semantic release
     runs-on: ubuntu-latest
     needs:
@@ -78,21 +78,6 @@ jobs:
       - name: Keep `beta` up to date with `main` (fast-forward enabled)
         uses: johannes-huther/sync-branch@v2
         with:
-          git_committer_name: ${{ secrets.BUMP_GIT_NAME }}
-          git_committer_email: ${{ secrets.BUMP_GIT_EMAIL }}
-          github_token: ${{ secrets.GH_TOKEN }}
-
-  sync_beta_to_next:
-    if: ${{ github.ref == 'refs/heads/beta' }}
-    name: Sync branch `beta` to `next` (fast-forward enabled)
-    runs-on: ubuntu-latest
-    needs:
-      - semantic-release
-    steps:
-      - name: Keep `next` up to date with `beta` (fast-forward enabled)
-        uses: johannes-huther/sync-branch@v2
-        with:
-          target: "next"
           git_committer_name: ${{ secrets.BUMP_GIT_NAME }}
           git_committer_email: ${{ secrets.BUMP_GIT_EMAIL }}
           github_token: ${{ secrets.GH_TOKEN }}
