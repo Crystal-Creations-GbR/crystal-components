@@ -44,5 +44,9 @@ export default defineNuxtModule({
       name: "CSnackbarManager",
       filePath: resolver.resolve("components/CSnackbarManager.vue"),
     });
+    await addComponent({
+      name: "CNavigationDrawer",
+      filePath: resolver.resolve("components/CNavigationDrawer.vue"),
+    });
   },
 });
