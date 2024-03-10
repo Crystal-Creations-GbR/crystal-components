@@ -36,5 +36,13 @@ export default defineNuxtModule({
       name: "CItemListGroup",
       filePath: resolver.resolve("components/CItemListGroup.vue"),
     });
+    await addComponent({
+      name: "CSnackbar",
+      filePath: resolver.resolve("components/CSnackbar.vue"),
+    });
+    await addComponent({
+      name: "CSnackbarManager",
+      filePath: resolver.resolve("components/CSnackbarManager.vue"),
+    });
   },
 });
