@@ -1,7 +1,9 @@
 import { type VuetifyOptions } from "vuetify";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
+import { md3 } from "vuetify/blueprints";
 
 const options: VuetifyOptions = {
+  blueprint: md3,
   theme: {
     defaultTheme: "light",
     themes: {
