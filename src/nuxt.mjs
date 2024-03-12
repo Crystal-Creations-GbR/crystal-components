@@ -52,5 +52,9 @@ export default defineNuxtModule({
       name: "CCard",
       filePath: resolver.resolve("components/CCard.vue"),
     });
+    await addComponent({
+      name: "CCardDialog",
+      filePath: resolver.resolve("components/CCardDialog.vue"),
+    });
   },
 });
