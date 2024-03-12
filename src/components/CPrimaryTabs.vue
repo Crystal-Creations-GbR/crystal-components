@@ -42,7 +42,7 @@ withDefaults(
 );
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .c-primary-tabs {
   .v-tab {
     border-radius: 0 !important;
@@ -52,7 +52,6 @@ withDefaults(
       height: 3px;
       border-top-right-radius: 24px;
       border-top-left-radius: 24px;
-      margin: auto;
       left: calc(50% - 15px);
     }
   }

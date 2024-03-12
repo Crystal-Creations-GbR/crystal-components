@@ -8,6 +8,7 @@ import CCardDialog from "./components/CCardDialog.vue";
 import CSettingsItem from "./components/CSettingsItem.vue";
 import CNavigationSubtitle from "./components/CNavigationSubtitle.vue";
 import CPrimaryTabs from "./components/CPrimaryTabs.vue";
+import CSecondaryNavigation from "./components/CSecondaryNavigation.vue";
 export { AnimatedCheckmark } from "@crystal-creations/animated-checkmark";
 export { PulsatingCircle } from "@crystal-creations/pulsating-circle";
 
@@ -21,3 +22,4 @@ export { CCardDialog };
 export { CSettingsItem };
 export { CNavigationSubtitle };
 export { CPrimaryTabs };
+export { CSecondaryNavigation };
