@@ -60,5 +60,9 @@ export default defineNuxtModule({
       name: "CSettingsItem",
       filePath: resolver.resolve("components/CSettingsItem.vue"),
     });
+    await addComponent({
+      name: "CNavigationSubtitle",
+      filePath: resolver.resolve("components/CNavigationSubtitle.vue"),
+    });
   },
 });
