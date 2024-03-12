@@ -5,6 +5,7 @@ import CSnackbarManager from "./components/CSnackbarManager.vue";
 import CNavigationDrawer from "./components/CNavigationDrawer.vue";
 import CCard from "./components/CCard.vue";
 import CCardDialog from "./components/CCardDialog.vue";
+import CSettingsItem from "./components/CSettingsItem.vue";
 export { AnimatedCheckmark } from "@crystal-creations/animated-checkmark";
 export { PulsatingCircle } from "@crystal-creations/pulsating-circle";
 
@@ -15,3 +16,4 @@ export { CSnackbarManager };
 export { CNavigationDrawer };
 export { CCard };
 export { CCardDialog };
+export { CSettingsItem };
