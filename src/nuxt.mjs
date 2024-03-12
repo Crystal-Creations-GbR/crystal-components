@@ -48,5 +48,9 @@ export default defineNuxtModule({
       name: "CNavigationDrawer",
       filePath: resolver.resolve("components/CNavigationDrawer.vue"),
     });
+    await addComponent({
+      name: "CCard",
+      filePath: resolver.resolve("components/CCard.vue"),
+    });
   },
 });
