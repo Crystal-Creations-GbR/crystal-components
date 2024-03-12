@@ -4,6 +4,11 @@ import { md3 } from "vuetify/blueprints";
 
 const options: VuetifyOptions = {
   blueprint: md3,
+  defaults: {
+    VBtn: {
+      class: "text-none",
+    },
+  },
   theme: {
     defaultTheme: "light",
     themes: {
