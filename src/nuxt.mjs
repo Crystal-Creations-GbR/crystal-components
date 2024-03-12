@@ -68,5 +68,9 @@ export default defineNuxtModule({
       name: "CPrimaryTabs",
       filePath: resolver.resolve("components/CPrimaryTabs.vue"),
     });
+    await addComponent({
+      name: "CSecondaryNavigation",
+      filePath: resolver.resolve("components/CSecondaryNavigation.vue"),
+    });
   },
 });
