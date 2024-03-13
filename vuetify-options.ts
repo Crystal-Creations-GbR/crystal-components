@@ -18,6 +18,7 @@ const options: VuetifyOptions = {
           primary: "#de735f",
           secondary: "#3d4059",
           accent: "#eeb06e",
+          background: "#f3f0f0",
         },
         variables: {},
       },
