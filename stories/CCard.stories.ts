@@ -62,6 +62,43 @@ export const Default: Story = {
   }),
 };
 
+export const CenteredTitle: Story = {
+  args: {
+    title: "Centered card title",
+    titlePosition: "center",
+  },
+  render: createStorybookRender({
+    components: { CCard },
+    template: `
+<c-card v-bind='args' class="ma-5">
+    Cards main content.
+</c-card>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: "Cards main content.",
+  }),
+};
+
+export const LargeTitle: Story = {
+  args: {
+    title: "Large card title",
+    titleSize: "large",
+  },
+  render: createStorybookRender({
+    components: { CCard },
+    template: `
+<c-card v-bind='args' class="ma-5">
+    This title is larger and optimal to use in a card dialog. The title gets smaller on mobile.
+</c-card>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate:
+      "This title is larger and optimal to use in a card dialog. The title gets smaller on mobile.",
+  }),
+};
+
 export const Actions: Story = {
   args: {
     title: "Card with actions",
