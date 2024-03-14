@@ -5,13 +5,13 @@
     border
     :width="width"
     :max-width="maxWidth"
-    class="c-card pt-5 pt-md-8"
+    class="c-card pt-6 pt-md-8"
     :class="
       slots['content-full-width'] ||
       slots['actions'] ||
       slots['prepend-actions']
         ? ''
-        : 'pb-5 pb-md-8'
+        : 'pb-6 pb-md-8'
     "
     :loading="loading"
   >
@@ -27,7 +27,7 @@
     <div class="c-card-sections">
       <v-card-title
         v-if="title"
-        class="pt-0 pb-0 px-5 px-md-8 text-h6"
+        class="pt-0 pb-0 px-6 px-md-8 text-h6"
         :class="'text-' + titlePosition"
       >
         {{ title }}
@@ -35,24 +35,24 @@
 
       <v-card-subtitle
         v-if="subtitle"
-        class="c-card-subtitle px-5 px-md-8 text-wrap"
+        class="c-card-subtitle px-6 px-md-8 text-wrap"
       >
         {{ subtitle }}
       </v-card-subtitle>
 
       <!-- Content -->
-      <div v-if="slots['default']" class="px-5 px-md-8">
+      <div v-if="slots['default']" class="px-6 px-md-8">
         <slot></slot>
       </div>
 
       <!-- Full Width Content -->
       <div v-if="slots['content-full-width']">
-        <slot name="content-full-width" :padding="'px-5 px-md-8'"></slot>
+        <slot name="content-full-width" :padding="'px-6 px-md-8'"></slot>
       </div>
 
       <v-card-actions
         v-if="slots['actions'] || slots['prepend-actions']"
-        class="mt-2 mb-4 px-3 px-md-6 d-flex"
+        class="mt-2 mb-3 px-3 px-md-6 d-flex"
       >
         <slot name="prepend-actions"></slot>
         <v-spacer></v-spacer>
