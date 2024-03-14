@@ -8,6 +8,7 @@
   >
     <c-card
       :title="title"
+      :title-size="titleSize"
       :subtitle="subtitle"
       :loading="loading"
       :max-width="maxWidth"
@@ -50,6 +51,11 @@ withDefaults(
     title?: string;
 
     /**
+     * The size of the title.
+     */
+    titleSize?: "normal" | "large";
+
+    /**
      * The subtitle of the dialog.
      */
     subtitle?: string;
@@ -81,6 +87,7 @@ withDefaults(
   }>(),
   {
     title: undefined,
+    titleSize: "large",
     subtitle: undefined,
     width: "500px",
     maxWidth: undefined,
