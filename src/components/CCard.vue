@@ -28,7 +28,7 @@
       <v-card-title
         v-if="title"
         class="pt-0 pb-0 px-6 px-md-8 text-h6"
-        :class="'text-' + titlePosition"
+        :class="titleClass"
       >
         {{ title }}
       </v-card-title>
@@ -63,7 +63,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSlots } from "vue";
+import { computed, useSlots } from "vue";
 
 const slots = useSlots();
 
@@ -73,7 +73,7 @@ const slots = useSlots();
  *
  * @see https://m3.material.io/components/cards/overview
  */
-withDefaults(
+const props = withDefaults(
   defineProps<{
     /**
      * The title of the card.
@@ -84,6 +84,11 @@ withDefaults(
      * The position of the title.
      */
     titlePosition?: "center" | "left" | "right";
+
+    /**
+     * The size of the title.
+     */
+    titleSize?: "normal" | "large";
 
     /**
      * The subtitle of the card.
@@ -108,17 +113,46 @@ withDefaults(
   {
     title: undefined,
     titlePosition: "left",
+    titleSize: "normal",
     subtitle: undefined,
     width: "100%",
     maxWidth: "850px",
   },
 );
+
+/**
+ * Computes the classes for the title component.
+ */
+const titleClass = computed<string>(() => {
+  let classes = "text-" + props.titlePosition;
+
+  if (props.titleSize && props.titleSize !== "normal")
+    classes += " " + props.titleSize;
+
+  return classes;
+});
 </script>
 
 <style scoped lang="scss">
-.c-card .c-card-sections > * {
-  &:not(:last-child) {
-    margin-bottom: 12px;
+@import "vuetify/lib/styles/settings/variables";
+
+.c-card {
+  .c-card-sections > * {
+    &:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+
+  .v-card-title.large {
+    line-height: normal;
+
+    @media (max-width: map-get($grid-breakpoints, "md")) {
+      font-size: 26px !important;
+    }
+
+    @media (min-width: map-get($grid-breakpoints, "md")) {
+      font-size: 30px !important;
+    }
   }
 }
 </style>
