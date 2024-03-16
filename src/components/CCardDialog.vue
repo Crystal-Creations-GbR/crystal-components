@@ -5,6 +5,7 @@
     :min-width="minWidth"
     :persistent="persistent"
     class="c-dialog ma-2"
+    scrollable
     @update:model-value="onUpdate"
   >
     <c-card

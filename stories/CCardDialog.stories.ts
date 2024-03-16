@@ -217,3 +217,41 @@ export const Width: Story = {
     `,
   }),
 };
+
+export const ScrollableContent: Story = {
+  args: {
+    title: "Scrollable Content Dialog",
+    subtitle:
+      "The content inside this dialog is scrollable. The title and the actions however will always stay visible. The dividers between the content and the title and actions will only be built when the dialog opens and will not adjust, if the window is resized.",
+  },
+  render: createStorybookRender({
+    components: { CCardDialog },
+    template: `
+      <div class="d-flex justify-center align-center">
+        <v-btn class="ma-4" @click='updateModel(true)' v-show="!chromatic">Show Dialog</v-btn>
+        <c-card-dialog v-bind='args' @update:modelValue='(val) => updateModel(val)'>
+           <v-sheet class="bg-primary text-center pa-5" rounded="xl" height="500px">
+              Large Content
+           </v-sheet>
+        
+           <template #actions>
+            <v-btn @click="updateModel(false);">Cancel</v-btn>
+            <v-btn @click="updateModel(false);">Okay</v-btn>
+          </template>
+        </c-card-dialog>
+      </div>
+        `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: `
+      <v-sheet class="bg-primary text-center pa-5" rounded="xl" height="500px">
+        Large Content
+      </v-sheet>
+
+      <template #actions>
+        <v-btn>Cancel</v-btn>
+        <v-btn>Okay</v-btn>
+      </template>
+    `,
+  }),
+};
