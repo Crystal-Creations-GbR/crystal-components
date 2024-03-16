@@ -5,6 +5,7 @@
     :min-width="minWidth"
     :persistent="persistent"
     class="c-dialog ma-2"
+    @update:model-value="onUpdate"
   >
     <c-card
       :title="title"
@@ -95,6 +96,22 @@ withDefaults(
     persistent: false,
   },
 );
+
+/**
+ * Handles the update of the model-value and emits a closed event.
+ *
+ * @param value the new value.
+ */
+function onUpdate(value: boolean) {
+  if (!value) emit("close");
+}
+
+const emit = defineEmits<{
+  /**
+   * Event that is emitted when the dialog is closed.
+   */
+  (e: "close"): void;
+}>();
 </script>
 
 <style lang="scss">
