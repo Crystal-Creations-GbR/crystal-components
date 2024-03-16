@@ -65,6 +65,10 @@ export default defineNuxtModule({
       filePath: resolver.resolve("components/CNavigationSubtitle.vue"),
     });
     await addComponent({
+      name: "CPasswordInput",
+      filePath: resolver.resolve("components/CPasswordInput.vue"),
+    });
+    await addComponent({
       name: "CPrimaryTabs",
       filePath: resolver.resolve("components/CPrimaryTabs.vue"),
     });
