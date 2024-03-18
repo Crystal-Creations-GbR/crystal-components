@@ -13,8 +13,7 @@
       :title-size="titleSize"
       :subtitle="subtitle"
       :loading="loading"
-      :max-width="maxWidth"
-      class="mx-auto"
+      max-width=""
     >
       <template v-if="slots['prepend-actions']" #prepend-actions>
         <slot name="prepend-actions"></slot>
@@ -66,11 +65,6 @@ withDefaults(
      * The width of the dialog
      */
     width?: string;
-
-    /**
-     * The max width of the dialog.
-     */
-    maxWidth?: string;
 
     /**
      * The min width of the dialog.

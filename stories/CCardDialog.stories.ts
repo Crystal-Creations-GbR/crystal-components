@@ -24,9 +24,6 @@ const meta: Meta<typeof CCardDialog> = {
     width: {
       control: "text",
     },
-    maxWidth: {
-      control: "text",
-    },
     minWidth: {
       control: "text",
     },
@@ -131,7 +128,7 @@ export const Persistent: Story = {
 export const SimpleConfirmDialog: Story = {
   args: {
     subtitle: "Are you sure you want to delete your account?",
-    maxWidth: "350px",
+    width: "350px",
   },
   render: createStorybookRender({
     components: { CCardDialog },
@@ -190,8 +187,7 @@ export const Width: Story = {
   args: {
     title: "Dialog with defined widths",
     subtitle: "This Dialog has a min-width of 300px and a max-width of 500px.",
-    width: "unset",
-    maxWidth: "500px",
+    width: "500px",
     minWidth: "300px",
   },
   render: createStorybookRender({
