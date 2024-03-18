@@ -14,7 +14,7 @@
           <v-col
             :sm="labelColumns"
             cols="12"
-            class="text-subtitle-2 text-grey-darken-1 mr-2"
+            class="d-flex align-center text-subtitle-2 text-grey-darken-1 mr-2"
           >
             <p>{{ label }}</p>
           </v-col>
