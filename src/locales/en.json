@@ -4,6 +4,12 @@
       "author_not_specified": "Author not specified",
       "by_author": "by {author}",
       "license": "License"
+    },
+    "password-input": {
+      "labels": {
+        "password": "Password",
+        "show_password": "Show Password"
+      }
     }
   }
 }
