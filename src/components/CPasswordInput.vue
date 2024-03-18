@@ -31,7 +31,7 @@ const i18n = useI18n();
 /**
  * The currently entered password.
  */
-const model = defineModel<string>({ required: true });
+const model = defineModel<string | undefined>({ required: true });
 
 /**
  * This component contains a password input field as well as "show password"-checkbox.
