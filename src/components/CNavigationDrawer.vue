@@ -12,17 +12,22 @@
         <slot name="branding"></slot>
       </v-list>
 
-      <!-- Navigation Items -->
-      <div class="c-navigation-drawer-items flex-grow-1">
-        <slot></slot>
-      </div>
-
-      <!-- Footer -->
-      <v-fade-transition>
-        <div v-if="slots['footer'] && !rail" class="my-3 text-no-wrap">
-          <slot name="footer"></slot>
+      <div
+        class="d-flex flex-column overflow-x-hidden overflow-y-auto"
+        style="height: 100%"
+      >
+        <div class="c-navigation-drawer-items flex-grow-1">
+          <!-- Navigation Items -->
+          <slot></slot>
         </div>
-      </v-fade-transition>
+
+        <!-- Footer -->
+        <v-fade-transition>
+          <div v-if="slots['footer'] && !rail" class="my-3 text-no-wrap">
+            <slot name="footer"></slot>
+          </div>
+        </v-fade-transition>
+      </div>
     </div>
   </v-navigation-drawer>
 </template>
