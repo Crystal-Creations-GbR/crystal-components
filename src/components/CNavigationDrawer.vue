@@ -6,14 +6,23 @@
     mobile-breakpoint="md"
     class="c-navigation-drawer rounded-xl"
   >
-    <!-- Branding -->
-    <v-list v-if="slots['branding']" nav class="my-3">
-      <slot name="branding"></slot>
-    </v-list>
+    <div class="d-flex flex-column" style="height: 100%">
+      <!-- Branding -->
+      <v-list v-if="slots['branding']" nav class="my-3">
+        <slot name="branding"></slot>
+      </v-list>
 
-    <!-- Navigation Items -->
-    <div class="c-navigation-drawer-items">
-      <slot></slot>
+      <!-- Navigation Items -->
+      <div class="c-navigation-drawer-items flex-grow-1">
+        <slot></slot>
+      </div>
+
+      <!-- Footer -->
+      <v-fade-transition>
+        <div v-if="slots['footer'] && !rail" class="my-3 text-no-wrap">
+          <slot name="footer"></slot>
+        </div>
+      </v-fade-transition>
     </div>
   </v-navigation-drawer>
 </template>
