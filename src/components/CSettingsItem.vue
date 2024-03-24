@@ -3,6 +3,7 @@
     :prepend-icon="prependIcon"
     :append-icon="clickable ? mdiChevronRight : undefined"
     :ripple="clickable"
+    :to="to"
     min-height="64"
     class="px-md-8 px-5"
     @click="emit('click')"
@@ -30,6 +31,7 @@
 
 <script setup lang="ts">
 import { mdiChevronRight } from "@mdi/js";
+import { RouteLocationRaw } from "vue-router";
 
 /**
  * This component displays a list-item to display and manage settings.
@@ -62,6 +64,11 @@ withDefaults(
      * Will show a chevron on the right side and emit the `click` event on click.
      */
     clickable?: boolean;
+
+    /**
+     * Denotes the target route of the link. You can find more information about the `to` prop on the vue-router documentation.
+     */
+    to?: RouteLocationRaw;
   }>(),
   {
     label: undefined,
@@ -69,6 +76,7 @@ withDefaults(
     prependIcon: undefined,
     value: null,
     clickable: false,
+    to: undefined,
   },
 );
 
