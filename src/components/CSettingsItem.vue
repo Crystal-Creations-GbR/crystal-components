@@ -12,6 +12,7 @@
         <!-- Label and value -->
         <v-row no-gutters>
           <v-col
+            v-if="label"
             :sm="labelColumns"
             cols="12"
             class="d-flex align-center text-subtitle-2 text-grey-darken-1 mr-2"
@@ -38,7 +39,7 @@ withDefaults(
     /**
      * The label of this settings item.
      */
-    label: string;
+    label?: string;
 
     /**
      * The grid-columns to use for the label column.
@@ -63,6 +64,7 @@ withDefaults(
     clickable?: boolean;
   }>(),
   {
+    label: undefined,
     labelColumns: 3,
     prependIcon: undefined,
     value: null,

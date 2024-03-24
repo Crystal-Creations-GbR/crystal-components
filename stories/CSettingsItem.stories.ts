@@ -60,3 +60,9 @@ export const LabelColumn: Story = {
     value: "Settings value",
   },
 };
+
+export const ValueOnly: Story = {
+  args: {
+    value: "Settings value",
+  },
+};
