@@ -13,6 +13,7 @@
       :title-size="titleSize"
       :subtitle="subtitle"
       :loading="loading"
+      :color="color"
       max-width=""
     >
       <template v-if="slots['prepend-actions']" #prepend-actions>
@@ -80,6 +81,11 @@ withDefaults(
      * Whether the loading bar should be shown or not.
      */
     loading?: boolean;
+
+    /**
+     * Applies specified color to the card - supports utility colors (for example `success` or `purple`) or css color (#033 or rgba(255, 0, 0, 0.5)).
+     */
+    color?: string;
   }>(),
   {
     title: undefined,
@@ -89,6 +95,7 @@ withDefaults(
     maxWidth: undefined,
     minWidth: undefined,
     persistent: false,
+    color: undefined,
   },
 );
 

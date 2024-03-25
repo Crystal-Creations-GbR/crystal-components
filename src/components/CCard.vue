@@ -8,6 +8,7 @@
     class="c-card pt-6 pt-md-8"
     :class="cardClass"
     :loading="loading"
+    :color="color"
   >
     <template #loader="{ isActive }">
       <v-progress-linear
@@ -114,6 +115,11 @@ const props = withDefaults(
      * Whether the loading bar should be shown or not.
      */
     loading?: boolean;
+
+    /**
+     * Applies specified color to the card - supports utility colors (for example `success` or `purple`) or css color (#033 or rgba(255, 0, 0, 0.5)).
+     */
+    color?: string;
   }>(),
   {
     title: undefined,
@@ -122,6 +128,7 @@ const props = withDefaults(
     subtitle: undefined,
     width: "100%",
     maxWidth: "850px",
+    color: undefined,
   },
 );
 
