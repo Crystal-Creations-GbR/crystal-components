@@ -32,6 +32,9 @@ const meta: Meta<typeof CCard> = {
     loading: {
       control: "boolean",
     },
+    color: {
+      control: "text",
+    },
   },
   parameters: createComponentStorybookParameters({
     componentDescription:
@@ -161,5 +164,23 @@ export const ContentFullWidth: Story = {
           </v-list>
       </template>
     `,
+  }),
+};
+
+export const Color: Story = {
+  args: {
+    title: "Card title",
+    color: "red",
+  },
+  render: createStorybookRender({
+    components: { CCard },
+    template: `
+<c-card v-bind='args' class="ma-5">
+    Cards main content.
+</c-card>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: "Cards main content.",
   }),
 };
