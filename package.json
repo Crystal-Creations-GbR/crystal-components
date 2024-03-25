@@ -46,7 +46,7 @@
   "peerDependencies": {
     "@mdi/js": "^7.4.47",
     "vue": "^3.0.0",
-    "vue-i18n": "^9.9.1",
+    "vue-i18n": "^9.10.1",
     "vuetify": "^3.5.2"
   },
   "devDependencies": {
@@ -85,7 +85,7 @@
     "vite": "^4.4.9",
     "vite-plugin-dts": "^3.6.0",
     "vue": "^3.0.0",
-    "vue-i18n": "^9.9.1",
+    "vue-i18n": "^9.10.1",
     "vuetify": "^3.5.2"
   },
   "dependencies": {
