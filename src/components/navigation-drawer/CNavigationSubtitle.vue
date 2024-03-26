@@ -54,4 +54,14 @@ const props = withDefaults(
 .v-list .c-navigation-subtitle:not(:first-child) {
   margin-top: 16px;
 }
+
+// When used in navigation drawer, hide it on rail mode
+.c-navigation-drawer.rail {
+  .c-navigation-subtitle {
+    opacity: 0;
+    height: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
 </style>
