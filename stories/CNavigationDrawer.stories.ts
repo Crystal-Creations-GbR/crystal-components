@@ -5,7 +5,12 @@ import {
   createStorybookRender,
 } from "../src/storybook-helper";
 import { allModes } from "../.storybook/modes";
-import { CNavigationDrawer } from "../src";
+import {
+  CNavigationDrawer,
+  CNavigationItem,
+  CNavigationSubtitle,
+  CNavigationDivider,
+} from "../src";
 
 const meta: Meta<typeof CNavigationDrawer> = {
   title: "Components/NavigationDrawer",
@@ -25,7 +30,12 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: createStorybookRender({
-    components: { CNavigationDrawer },
+    components: {
+      CNavigationDrawer,
+      CNavigationItem,
+      CNavigationSubtitle,
+      CNavigationDivider,
+    },
     template: `
 <c-navigation-drawer v-bind='args'>
   <template #branding>
@@ -33,11 +43,29 @@ export const Default: Story = {
   </template>
   
   <v-list color="primary" variant="text" nav>
-    <v-list-item @click="() => {}" value="1">List 1</v-list-item>
-    <v-list-item @click="() => {}" value="2">List 2</v-list-item>
-    <v-list-item @click="() => {}" value="3">List 3</v-list-item>
-    <v-list-item @click="() => {}" value="4">List 4</v-list-item>
-    <v-list-item @click="() => {}" value="5">List 5</v-list-item>
+     <c-navigation-subtitle
+        size="normal"
+        title="Subtitle 1"
+      ></c-navigation-subtitle>
+
+      <c-navigation-item
+        label="Item 1"
+      ></c-navigation-item>
+
+      <c-navigation-item
+        label="Item 2"
+      ></c-navigation-item>
+
+      <c-navigation-divider></c-navigation-divider>
+
+      <c-navigation-subtitle
+        size="normal"
+        title="Subtitle 2"
+      ></c-navigation-subtitle>
+
+      <c-navigation-item
+        label="Item 3"
+      ></c-navigation-item>
   </v-list>
   
   <template #footer>
@@ -68,11 +96,29 @@ export const Default: Story = {
       </template>
       
       <v-list color="primary" variant="text" nav>
-        <v-list-item @click="() => {}" value="1">List 1</v-list-item>
-        <v-list-item @click="() => {}" value="2">List 2</v-list-item>
-        <v-list-item @click="() => {}" value="3">List 3</v-list-item>
-        <v-list-item @click="() => {}" value="4">List 4</v-list-item>
-        <v-list-item @click="() => {}" value="5">List 5</v-list-item>
+        <c-navigation-subtitle
+          size="normal"
+          title="Subtitle 1"
+        ></c-navigation-subtitle>
+        
+        <c-navigation-item
+          label="Item 1"
+        ></c-navigation-item>
+        
+        <c-navigation-item
+          label="Item 2"
+        ></c-navigation-item>
+        
+        <c-navigation-divider></c-navigation-divider>
+        
+        <c-navigation-subtitle
+          size="normal"
+          title="Subtitle 2"
+        ></c-navigation-subtitle>
+        
+        <c-navigation-item
+          label="Item 3"
+        ></c-navigation-item>
       </v-list>
       
       <template #footer>
