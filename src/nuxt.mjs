@@ -46,7 +46,7 @@ export default defineNuxtModule({
     });
     await addComponent({
       name: "CNavigationDrawer",
-      filePath: resolver.resolve("components/CNavigationDrawer.vue"),
+      filePath: resolver.resolve("components/navigation-drawer/CNavigationDrawer.vue"),
     });
     await addComponent({
       name: "CCard",
@@ -62,7 +62,7 @@ export default defineNuxtModule({
     });
     await addComponent({
       name: "CNavigationSubtitle",
-      filePath: resolver.resolve("components/CNavigationSubtitle.vue"),
+      filePath: resolver.resolve("components/navigation-drawer/CNavigationSubtitle.vue"),
     });
     await addComponent({
       name: "CPasswordInput",
