@@ -2,6 +2,7 @@
   <v-navigation-drawer
     v-model="showDrawer"
     :rail="rail"
+    :class="rail ? 'rail' : ''"
     rail-width="72"
     mobile-breakpoint="md"
     class="c-navigation-drawer rounded-xl"
@@ -91,6 +92,16 @@ const rail = ref<boolean>(false);
         margin-left: 8px;
       }
     }
+  }
+
+  // Navigation items
+  // Enable transitions for a few properties that will be used to hide items in rail mode
+  & * {
+    transition:
+      height 0.2s ease-in-out,
+      margin-bottom 0.2s ease-in-out,
+      margin-top 0.2s ease-in-out,
+      opacity 0.2s ease-in-out;
   }
 }
 </style>
