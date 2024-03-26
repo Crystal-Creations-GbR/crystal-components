@@ -53,6 +53,10 @@ export default defineNuxtModule({
       filePath: resolver.resolve("components/navigation-drawer/CNavigationDivider.vue"),
     });
     await addComponent({
+      name: "CNavigationItem",
+      filePath: resolver.resolve("components/navigation-drawer/CNavigationItem.vue"),
+    });
+    await addComponent({
       name: "CCard",
       filePath: resolver.resolve("components/CCard.vue"),
     });
