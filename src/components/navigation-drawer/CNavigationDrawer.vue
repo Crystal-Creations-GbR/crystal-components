@@ -3,13 +3,13 @@
     v-model="showDrawer"
     :rail="rail"
     :class="rail ? 'rail' : ''"
-    rail-width="72"
+    rail-width="80"
     mobile-breakpoint="md"
     class="c-navigation-drawer rounded-xl"
   >
     <div class="d-flex flex-column" style="height: 100%">
       <!-- Branding -->
-      <v-list v-if="slots['branding']" nav class="my-3">
+      <v-list v-if="slots['branding']" nav class="my-3 ml-1">
         <slot name="branding"></slot>
       </v-list>
 
@@ -84,12 +84,12 @@ const rail = ref<boolean>(false);
     .v-list-item {
       border-radius: 24px;
 
-      .v-list-item__prepend .v-list-item__spacer {
-        width: 16px !important;
-      }
-
       .v-list-item__prepend {
-        margin-left: 8px;
+        margin-left: 12px;
+
+        .v-list-item__spacer {
+          width: 12px !important;
+        }
       }
     }
   }
@@ -102,6 +102,13 @@ const rail = ref<boolean>(false);
       margin-bottom 0.2s ease-in-out,
       margin-top 0.2s ease-in-out,
       opacity 0.2s ease-in-out;
+  }
+
+  &.rail {
+    // Hide list item label in rail mode
+    .v-list-item .v-list-item__content {
+      opacity: 0;
+    }
   }
 }
 </style>
