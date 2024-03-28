@@ -4,7 +4,7 @@ import CSnackbar from "./components/CSnackbar.vue";
 import CSnackbarManager from "./components/CSnackbarManager.vue";
 import CNavigationDrawer from "./components/navigation-drawer/CNavigationDrawer.vue";
 import CCard from "./components/CCard.vue";
-import CCardDialog from "./components/CCardDialog.vue";
+import CCardDialog from "./components/dialogs/CCardDialog.vue";
 import CSettingsItem from "./components/CSettingsItem.vue";
 import CNavigationSubtitle from "./components/navigation-drawer/CNavigationSubtitle.vue";
 import CNavigationDivider from "./components/navigation-drawer/CNavigationDivider.vue";

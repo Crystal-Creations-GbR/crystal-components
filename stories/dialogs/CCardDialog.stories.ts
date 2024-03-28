@@ -1,15 +1,15 @@
 import { Meta, StoryObj } from "@storybook/vue3";
 import { userEvent, within } from "@storybook/testing-library";
 import isChromatic from "chromatic/isChromatic";
-import { CCardDialog } from "../src";
+import { CCardDialog } from "../../src";
 import {
   createComponentStorybookParameters,
   createStorybookParameters,
   createStorybookRender,
-} from "../src/storybook-helper";
+} from "../../src/storybook-helper";
 
 const meta: Meta<typeof CCardDialog> = {
-  title: "Components/CardDialog",
+  title: "Components/Dialogs/CardDialog",
   component: CCardDialog,
   argTypes: {
     modelValue: {
