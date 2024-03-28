@@ -4,10 +4,15 @@
     :width="width"
     :min-width="minWidth"
     :persistent="persistent"
+    :activator="activator"
     class="c-dialog ma-2"
     scrollable
     @update:model-value="onUpdate"
   >
+    <template v-if="slots['activator']" #activator="{ props }">
+      <slot name="activator" :props="props"></slot>
+    </template>
+
     <c-card
       :title="title"
       :title-size="titleSize"
@@ -30,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSlots } from "vue";
+import { ComponentPublicInstance, useSlots } from "vue";
 import CCard from "./CCard.vue";
 
 const slots = useSlots();
@@ -86,6 +91,13 @@ withDefaults(
      * Applies specified color to the card - supports utility colors (for example `success` or `purple`) or css color (#033 or rgba(255, 0, 0, 0.5)).
      */
     color?: string;
+
+    /**
+     * Explicitly sets the overlay’s activator.
+     *
+     * For more information, see https://vuetifyjs.com/en/api/v-dialog/.
+     */
+    activator?: Element | "parent" | (string & {}) | ComponentPublicInstance;
   }>(),
   {
     title: undefined,
@@ -96,6 +108,7 @@ withDefaults(
     minWidth: undefined,
     persistent: false,
     color: undefined,
+    activator: undefined,
   },
 );
 
