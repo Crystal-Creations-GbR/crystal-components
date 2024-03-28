@@ -58,11 +58,18 @@
 
     <v-card-actions
       v-if="slots['actions'] || slots['prepend-actions']"
-      class="mt-2 mb-3 px-3 px-md-6 d-flex"
+      class="mb-3 px-2 px-md-6 d-flex flex-wrap justify-space-between"
     >
-      <slot name="prepend-actions"></slot>
-      <v-spacer></v-spacer>
-      <slot name="actions"></slot>
+      <div v-if="slots['prepend-actions']">
+        <slot name="prepend-actions"></slot>
+      </div>
+
+      <div
+        v-if="slots['actions']"
+        class="d-flex justify-end flex-grow-1 flex-wrap align-end"
+      >
+        <slot name="actions"></slot>
+      </div>
     </v-card-actions>
   </v-card>
 </template>
@@ -204,5 +211,12 @@ onMounted(() => {
       font-size: 30px !important;
     }
   }
+}
+</style>
+
+<style lang="scss">
+// Apply margin to every element directly in the action divs to make sure there is space between when wrapping
+.c-card .v-card-actions > div > * {
+  margin: 8px 4px 0;
 }
 </style>
