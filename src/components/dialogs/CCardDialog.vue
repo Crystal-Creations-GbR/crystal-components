@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { ComponentPublicInstance, useSlots } from "vue";
-import CCard from "./CCard.vue";
+import CCard from "../CCard.vue";
 
 const slots = useSlots();
 
