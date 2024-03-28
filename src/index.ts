@@ -12,6 +12,7 @@ import CNavigationItem from "./components/navigation-drawer/CNavigationItem.vue"
 import CPasswordInput from "./components/CPasswordInput.vue";
 import CPrimaryTabs from "./components/CPrimaryTabs.vue";
 import CSecondaryNavigation from "./components/CSecondaryNavigation.vue";
+import CMultiOptionButton from "./components/CMultiOptionButton.vue";
 export { AnimatedCheckmark } from "@crystal-creations/animated-checkmark";
 export { PulsatingCircle } from "@crystal-creations/pulsating-circle";
 
@@ -29,3 +30,4 @@ export { CNavigationItem };
 export { CPasswordInput };
 export { CPrimaryTabs };
 export { CSecondaryNavigation };
+export { CMultiOptionButton };
