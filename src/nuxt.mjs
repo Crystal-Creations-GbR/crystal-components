@@ -84,5 +84,9 @@ export default defineNuxtModule({
       name: "CSecondaryNavigation",
       filePath: resolver.resolve("components/CSecondaryNavigation.vue"),
     });
+    await addComponent({
+      name: "CMultiOptionButton",
+      filePath: resolver.resolve("components/CMultiOptionButton.vue"),
+    });
   },
 });
