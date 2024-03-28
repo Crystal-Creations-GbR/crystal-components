@@ -65,6 +65,10 @@ export default defineNuxtModule({
       filePath: resolver.resolve("components/dialogs/CCardDialog.vue"),
     });
     await addComponent({
+      name: "CConfirmDialog",
+      filePath: resolver.resolve("components/dialogs/CConfirmDialog.vue"),
+    });
+    await addComponent({
       name: "CSettingsItem",
       filePath: resolver.resolve("components/CSettingsItem.vue"),
     });

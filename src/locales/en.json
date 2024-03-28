@@ -1,5 +1,12 @@
 {
   "crystal_components": {
+    "common": {
+      "labels": {
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "delete": "Delete"
+      }
+    },
     "license_card": {
       "author_not_specified": "Author not specified",
       "by_author": "by {author}",
