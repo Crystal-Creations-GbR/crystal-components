@@ -1,4 +1,6 @@
 import type { StorybookConfig } from "@storybook/vue3-vite";
+import { InlineConfig, mergeConfig } from "vite";
+import turbosnap from "vite-plugin-turbosnap";
 
 const config: StorybookConfig = {
   stories: [
@@ -20,6 +22,18 @@ const config: StorybookConfig = {
   },
   docs: {
     autodocs: true,
+  },
+  viteFinal(config: InlineConfig, { configType }) {
+    return mergeConfig(config, {
+      plugins:
+        configType === "PRODUCTION"
+          ? [
+              turbosnap({
+                rootDir: config.root ?? process.cwd(),
+              }),
+            ]
+          : [],
+    });
   },
 };
 

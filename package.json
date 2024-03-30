@@ -84,6 +84,7 @@
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-plugin-dts": "^3.6.0",
+    "vite-plugin-turbosnap": "^1.0.3",
     "vue": "^3.0.0",
     "vue-i18n": "^9.9.1",
     "vuetify": "^3.5.2"
