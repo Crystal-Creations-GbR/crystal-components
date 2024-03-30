@@ -4,7 +4,7 @@ import {
   createStorybookParameters,
   createStorybookRender,
 } from "../src/storybook-helper";
-import { allModes } from "../.storybook/modes";
+import { viewportModes } from "../.storybook/modes";
 import {
   CNavigationDrawer,
   CNavigationItem,
@@ -21,7 +21,7 @@ const meta: Meta<typeof CNavigationDrawer> = {
       componentDescription:
         "This component builds a navigation drawer that supports rail mode on large devices.\n\nThe navigation drawer will automatically be hidden on smaller devices.\n\n*Due to storybook restrictions, the navigation drawer cannot be collapsed manually.*",
     }),
-    chromatic: { modes: allModes },
+    chromatic: { modes: viewportModes },
   },
 };
 

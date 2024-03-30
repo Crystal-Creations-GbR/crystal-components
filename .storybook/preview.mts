@@ -13,7 +13,7 @@ import { addons } from "@storybook/preview-api";
 import { h } from "vue";
 import options from "../vuetify-options";
 import { withVuetifyTheme, DEFAULT_THEME } from "./withVuetifyTheme.decorator";
-import { themeLocaleModes } from "./modes";
+import { defaultMode } from "./modes";
 
 function loadLocaleMessages(): LocaleMessages<DefaultLocaleMessageSchema> {
   const locales = import.meta.glob("../src/locales/*.json", {
@@ -85,7 +85,7 @@ const preview: Preview = {
       },
     },
     chromatic: {
-      modes: themeLocaleModes,
+      modes: defaultMode,
     },
   },
 };
