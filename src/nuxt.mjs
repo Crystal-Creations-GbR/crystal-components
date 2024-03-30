@@ -81,6 +81,10 @@ export default defineNuxtModule({
       filePath: resolver.resolve("components/inputs/CPasswordInput.vue"),
     });
     await addComponent({
+      name: "CPriceInput",
+      filePath: resolver.resolve("components/inputs/CPriceInput.vue"),
+    });
+    await addComponent({
       name: "CPrimaryTabs",
       filePath: resolver.resolve("components/CPrimaryTabs.vue"),
     });
