@@ -5,7 +5,7 @@ import {
   createStorybookParameters,
   createStorybookRender,
 } from "../src/storybook-helper";
-import { allModes } from "../.storybook/modes";
+import { viewportModes } from "../.storybook/modes";
 
 const meta: Meta<typeof CSecondaryNavigation> = {
   title: "Components/SecondaryNavigation",
@@ -32,7 +32,7 @@ const meta: Meta<typeof CSecondaryNavigation> = {
       componentDescription:
         "This component builds a secondary navigation that can be used to navigate inside a page.\n\nThe navigation consists out of two different types of navigation:\nA side navigation inside a `v-navigation-drawer` and a primary tab-navigation inside a `v-app-bar`.",
     }),
-    chromatic: { modes: allModes },
+    chromatic: { modes: viewportModes },
   },
 };
 
