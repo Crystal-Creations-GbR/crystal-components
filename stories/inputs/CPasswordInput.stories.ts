@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { CPasswordInput } from "../src";
-import { createComponentStorybookParameters } from "../src/storybook-helper";
+import { CPasswordInput } from "../../src";
+import { createComponentStorybookParameters } from "../../src/storybook-helper";
 
 const meta: Meta<typeof CPasswordInput> = {
-  title: "Components/PasswordInput",
+  title: "Components/Inputs/PasswordInput",
   component: CPasswordInput,
   argTypes: {
     disabled: {

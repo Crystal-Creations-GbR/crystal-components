@@ -10,7 +10,7 @@ import CSettingsItem from "./components/CSettingsItem.vue";
 import CNavigationSubtitle from "./components/navigation-drawer/CNavigationSubtitle.vue";
 import CNavigationDivider from "./components/navigation-drawer/CNavigationDivider.vue";
 import CNavigationItem from "./components/navigation-drawer/CNavigationItem.vue";
-import CPasswordInput from "./components/CPasswordInput.vue";
+import CPasswordInput from "./components/inputs/CPasswordInput.vue";
 import CPrimaryTabs from "./components/CPrimaryTabs.vue";
 import CSecondaryNavigation from "./components/CSecondaryNavigation.vue";
 import CMultiOptionButton from "./components/CMultiOptionButton.vue";

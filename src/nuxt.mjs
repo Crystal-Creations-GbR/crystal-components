@@ -78,7 +78,7 @@ export default defineNuxtModule({
     });
     await addComponent({
       name: "CPasswordInput",
-      filePath: resolver.resolve("components/CPasswordInput.vue"),
+      filePath: resolver.resolve("components/inputs/CPasswordInput.vue"),
     });
     await addComponent({
       name: "CPrimaryTabs",
