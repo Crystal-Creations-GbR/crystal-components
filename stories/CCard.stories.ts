@@ -17,6 +17,9 @@ const meta: Meta<typeof CCard> = {
       control: "radio",
       options: ["center", "left", "right"],
     },
+    wrapTitle: {
+      control: "boolean",
+    },
     subtitle: {
       control: "text",
     },
@@ -106,6 +109,21 @@ export const LargeTitle: Story = {
     slotTemplate:
       "This title is larger and optimal to use in a card dialog. The title gets smaller on mobile.",
   }),
+};
+
+export const NowrapTitle: Story = {
+  args: {
+    title: "Long non-wrapping title",
+    width: "200px",
+  },
+};
+
+export const WrapTitle: Story = {
+  args: {
+    title: "Long wrapping title",
+    wrapTitle: true,
+    width: "200px",
+  },
 };
 
 export const Actions: Story = {
