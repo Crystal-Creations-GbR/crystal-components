@@ -107,6 +107,11 @@ const props = withDefaults(
     titleSize?: "normal" | "large";
 
     /**
+     * Whether the title should wrap.
+     */
+    wrapTitle?: boolean;
+
+    /**
      * The subtitle of the card.
      */
     subtitle?: string;
@@ -147,6 +152,7 @@ const props = withDefaults(
     title: undefined,
     titlePosition: "left",
     titleSize: "normal",
+    wrapTitle: undefined,
     subtitle: undefined,
     scrollingContentVerticalPadding: true,
     height: undefined,
@@ -182,6 +188,8 @@ const titleClass = computed<string>(() => {
 
   if (props.titleSize && props.titleSize !== "normal")
     classes += " " + props.titleSize;
+
+  if (props.wrapTitle) classes += " text-wrap";
 
   if (scrollable.value) classes += " mb-5 mb-md-7";
 
