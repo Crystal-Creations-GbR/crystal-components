@@ -20,6 +20,9 @@ const meta: Meta<typeof CCard> = {
     subtitle: {
       control: "text",
     },
+    height: {
+      control: "text",
+    },
     width: {
       control: "text",
     },

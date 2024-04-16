@@ -3,6 +3,7 @@
     rounded="xl"
     elevation="0"
     border
+    :height="height"
     :width="width"
     :max-width="maxWidth"
     class="c-card pt-6 pt-md-8"
@@ -109,6 +110,11 @@ const props = withDefaults(
     subtitle?: string;
 
     /**
+     * The height of the card.
+     */
+    height?: string;
+
+    /**
      * The width of the card.
      */
     width?: string;
@@ -133,6 +139,7 @@ const props = withDefaults(
     titlePosition: "left",
     titleSize: "normal",
     subtitle: undefined,
+    height: undefined,
     width: "100%",
     maxWidth: "850px",
     color: undefined,
