@@ -20,6 +20,9 @@ const meta: Meta<typeof CCard> = {
     subtitle: {
       control: "text",
     },
+    scrollingContentVerticalPadding: {
+      control: "boolean",
+    },
     height: {
       control: "text",
     },
@@ -185,5 +188,46 @@ export const Color: Story = {
   }),
   parameters: createStorybookParameters({
     slotTemplate: "Cards main content.",
+  }),
+};
+
+export const ScrollableContent: Story = {
+  args: {
+    title: "Scrollable Card content",
+    subtitle:
+      "Scrolling will be automatically enabled if the content is larger than the available space. This only works on a CCard with fixed or a maximum height. Keep in mind, that the surrounding divs also have to have a fixed or maximum height and also have the height set to 100%.",
+    height: "100%",
+    scrollingContentVerticalPadding: false,
+  },
+  render: createStorybookRender({
+    components: { CCard },
+    template: `
+<div style="height: 100%; max-height: 300px;" class="pa-5">
+  <c-card v-bind='args'>
+    <template #content-full-width="{ padding }">
+        <v-list>
+            <v-list-item @click="() => {}">This content has the full width</v-list-item>
+            <v-divider></v-divider>
+            <v-list-item @click="() => {}">This content has the full width</v-list-item>
+            <v-divider></v-divider>
+            <v-list-item :class="padding" @click="() => {}">Use 'padding' prop to set matching padding.</v-list-item>
+        </v-list>
+    </template>
+  </c-card>
+</div>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: `
+      <template #content-full-width="{ padding }">
+          <v-list>
+              <v-list-item @click="() => {}">This content has the full width</v-list-item>
+              <v-divider></v-divider>
+              <v-list-item @click="() => {}">This content has the full width</v-list-item>
+              <v-divider></v-divider>
+              <v-list-item :class="padding" @click="() => {}">Use 'padding' prop to set matching padding.</v-list-item>
+          </v-list>
+      </template>
+    `,
   }),
 };
