@@ -6,7 +6,7 @@
     :height="height"
     :width="width"
     :max-width="maxWidth"
-    class="c-card pt-6 pt-md-8"
+    class="c-card pt-6 pt-md-8 d-flex flex-column"
     :class="cardClass"
     :loading="loading"
     :color="color"
@@ -32,7 +32,9 @@
 
     <v-card-text
       ref="cardTextComponent"
-      :class="scrollable ? 'ma-0 px-0' : 'ma-0 pa-0'"
+      class="ma-0 px-0"
+      :class="scrollingContentVerticalPadding && scrollable ? 'py-4' : 'py-0'"
+      style="overflow-y: auto"
     >
       <v-card-subtitle
         v-if="subtitle"
@@ -110,6 +112,13 @@ const props = withDefaults(
     subtitle?: string;
 
     /**
+     * Whether vertical padding should be applied to the content inside the card when the content is scrollable.
+     *
+     * Defaults to `true`.
+     */
+    scrollingContentVerticalPadding?: boolean;
+
+    /**
      * The height of the card.
      */
     height?: string;
@@ -139,6 +148,7 @@ const props = withDefaults(
     titlePosition: "left",
     titleSize: "normal",
     subtitle: undefined,
+    scrollingContentVerticalPadding: true,
     height: undefined,
     width: "100%",
     maxWidth: "850px",
