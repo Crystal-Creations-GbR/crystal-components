@@ -35,8 +35,12 @@
       {{ subtitle }}
     </v-card-subtitle>
 
+    <div v-if="slots['header']" class="mb-3">
+      <slot name="header" :padding="'px-6 px-md-8'"></slot>
+    </div>
+
     <v-divider
-      v-if="scrollable && (title || subtitle)"
+      v-if="scrollable && (title || subtitle || slots['header'])"
       class="mb-0"
     ></v-divider>
 
