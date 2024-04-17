@@ -28,7 +28,17 @@
       {{ title }}
     </v-card-title>
 
-    <v-divider v-if="scrollable && title" class="mb-0"></v-divider>
+    <v-card-subtitle
+      v-if="subtitle"
+      class="c-card-subtitle px-6 px-md-8 text-wrap mb-3"
+    >
+      {{ subtitle }}
+    </v-card-subtitle>
+
+    <v-divider
+      v-if="scrollable && (title || subtitle)"
+      class="mb-0"
+    ></v-divider>
 
     <v-card-text
       ref="cardTextComponent"
@@ -36,13 +46,6 @@
       :class="scrollingContentVerticalPadding && scrollable ? 'py-4' : 'py-0'"
       style="overflow-y: auto"
     >
-      <v-card-subtitle
-        v-if="subtitle"
-        class="c-card-subtitle px-6 px-md-8 text-wrap"
-      >
-        {{ subtitle }}
-      </v-card-subtitle>
-
       <!-- Content -->
       <div v-if="slots['default']" class="px-6 px-md-8">
         <slot></slot>
@@ -190,8 +193,6 @@ const titleClass = computed<string>(() => {
     classes += " " + props.titleSize;
 
   if (props.wrapTitle) classes += " text-wrap";
-
-  if (scrollable.value) classes += " mb-5 mb-md-7";
 
   return classes;
 });
