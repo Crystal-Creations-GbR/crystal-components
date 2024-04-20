@@ -22,7 +22,7 @@
 
     <v-card-title
       v-if="title"
-      class="pt-0 pb-0 mb-3 px-6 px-md-8 text-h6"
+      class="pt-0 pb-0 px-6 px-md-8 text-h6"
       :class="titleClass"
     >
       {{ title }}
@@ -208,6 +208,11 @@ const titleClass = computed<string>(() => {
     classes += " " + props.titleSize;
 
   if (props.wrapTitle) classes += " text-wrap";
+
+  // Bottom margin - larger margin if only the title is available
+  if (scrollingEnabled.value && !props.subtitle && !slots.header)
+    classes += " mb-5 mb-md-7";
+  else classes += " mb-3";
 
   return classes;
 });
