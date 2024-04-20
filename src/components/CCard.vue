@@ -40,15 +40,17 @@
     </div>
 
     <v-divider
-      v-if="scrollable && (title || subtitle || slots['header'])"
+      v-if="scrollingEnabled && (title || subtitle || slots['header'])"
       class="mb-0"
     ></v-divider>
 
     <v-card-text
       ref="cardTextComponent"
       class="ma-0 px-0"
-      :class="scrollingContentVerticalPadding && scrollable ? 'py-4' : 'py-0'"
-      style="overflow-y: auto"
+      :class="
+        scrollingContentVerticalPadding && scrollingEnabled ? 'py-4' : 'py-0'
+      "
+      :style="forceScroll ? 'overflow-y: scroll' : 'overflow-y: auto'"
     >
       <!-- Content -->
       <div v-if="slots['default']" class="px-6 px-md-8">
@@ -62,7 +64,7 @@
     </v-card-text>
 
     <v-divider
-      v-if="scrollable && (slots['actions'] || slots['prepend-actions'])"
+      v-if="scrollingEnabled && (slots['actions'] || slots['prepend-actions'])"
       class="ma-0"
     ></v-divider>
 
@@ -151,6 +153,13 @@ const props = withDefaults(
     loading?: boolean;
 
     /**
+     * If true, the card will always be in scrollable mode.
+     *
+     * This adds the dividers and always shows the scroll bar.
+     */
+    forceScroll?: boolean;
+
+    /**
      * Applies specified color to the card - supports utility colors (for example `success` or `purple`) or css color (#033 or rgba(255, 0, 0, 0.5)).
      */
     color?: string;
@@ -176,7 +185,7 @@ const cardTextComponent = ref<VCardText>();
 
 const cardClass = computed<string>(() => {
   if (
-    scrollable.value ||
+    contentScrollable.value ||
     slots["content-full-width"] ||
     slots.actions ||
     slots["prepend-actions"]
@@ -202,9 +211,18 @@ const titleClass = computed<string>(() => {
 });
 
 /**
- * Whether the content inside the `v-card-text` component is large enough to scroll.
+ * Whether scrolling of the content is currently enabled.
+ *
+ * Depends on `contentScrollable` or the property `forceScroll` being true.
  */
-const scrollable = ref<boolean>(false);
+const scrollingEnabled = computed<boolean>(() => {
+  return props.forceScroll || contentScrollable.value;
+});
+
+/**
+ * Whether the content inside the `v-card-text` component is large enough to scroll
+ */
+const contentScrollable = ref<boolean>(false);
 
 /**
  * Checks, if the content inside the `v-card-text` is scrollable.
@@ -215,7 +233,7 @@ onMounted(() => {
     cardTextComponent.value.$el.scrollHeight >
       cardTextComponent.value.$el.clientHeight
   ) {
-    scrollable.value = true;
+    contentScrollable.value = true;
   }
 });
 </script>

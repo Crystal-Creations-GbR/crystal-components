@@ -41,6 +41,9 @@ const meta: Meta<typeof CCard> = {
     loading: {
       control: "boolean",
     },
+    forceScroll: {
+      control: "boolean",
+    },
     color: {
       control: "text",
     },
@@ -247,5 +250,23 @@ export const ScrollableContent: Story = {
           </v-list>
       </template>
     `,
+  }),
+};
+
+export const AlwaysScrollable: Story = {
+  args: {
+    title: "Always Scrollable Card",
+    forceScroll: true,
+  },
+  render: createStorybookRender({
+    components: { CCard },
+    template: `
+<c-card v-bind='args' class="ma-5">
+    Cards main content.
+</c-card>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: "Cards main content.",
   }),
 };
