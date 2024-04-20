@@ -48,7 +48,9 @@
       ref="cardTextComponent"
       class="ma-0 px-0"
       :class="
-        scrollingContentVerticalPadding && scrollingEnabled ? 'py-4' : 'py-0'
+        scrollingContentVerticalPadding && scrollingEnabled
+          ? 'pt-4 pb-0'
+          : 'py-0'
       "
       :style="forceScroll ? 'overflow-y: scroll' : 'overflow-y: auto'"
     >
