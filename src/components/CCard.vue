@@ -143,6 +143,11 @@ const props = withDefaults(
     subtitle?: string;
 
     /**
+     * The mode how this `CCard` is used.
+     */
+    mode?: "default" | "bottom-sheet";
+
+    /**
      * Whether vertical padding should be applied to the content inside the card when the content is scrollable.
      *
      * Defaults to `true`.
@@ -194,6 +199,7 @@ const props = withDefaults(
     titleSize: "normal",
     wrapTitle: undefined,
     subtitle: undefined,
+    mode: "default",
     scrollingContentVerticalPadding: true,
     height: undefined,
     width: "100%",
@@ -208,16 +214,21 @@ const props = withDefaults(
 const cardTextComponent = ref<VCardText>();
 
 const cardClass = computed<string>(() => {
+  let classes = "";
+
+  if (props.mode === "bottom-sheet")
+    classes += " c-card--variant--bottom-sheet";
+
   if (
-    contentScrollable.value ||
-    slots["content-full-width"] ||
-    slots.actions ||
-    slots["prepend-actions"]
+    !contentScrollable.value &&
+    !slots["content-full-width"] &&
+    !slots.actions &&
+    !slots["prepend-actions"]
   ) {
-    return "";
+    classes += " pb-6 pb-md-8";
   }
 
-  return "pb-6 pb-md-8";
+  return classes;
 });
 
 /**
@@ -278,6 +289,11 @@ const emit = defineEmits<{
 @import "vuetify/lib/styles/settings/variables";
 
 .c-card {
+  &.c-card--variant--bottom-sheet {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+
   & > .v-card-text > * {
     &:not(:last-child) {
       margin-bottom: 12px !important;

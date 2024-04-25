@@ -23,6 +23,10 @@ const meta: Meta<typeof CCard> = {
     subtitle: {
       control: "text",
     },
+    mode: {
+      control: "radio",
+      options: ["default", "bottom-sheet"],
+    },
     scrollingContentVerticalPadding: {
       control: "boolean",
     },
@@ -169,6 +173,24 @@ export const Closable: Story = {
   args: {
     title: "Closable Card",
     closable: true,
+  },
+  render: createStorybookRender({
+    components: { CCard },
+    template: `
+<c-card v-bind='args' class="ma-5">
+    Cards main content.
+</c-card>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: "Cards main content.",
+  }),
+};
+
+export const BottomSheet: Story = {
+  args: {
+    title: "Card for a BottomSheet",
+    mode: "bottom-sheet",
   },
   render: createStorybookRender({
     components: { CCard },
