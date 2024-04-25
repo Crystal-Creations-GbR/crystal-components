@@ -47,6 +47,9 @@ const meta: Meta<typeof CCard> = {
     color: {
       control: "text",
     },
+    closable: {
+      control: "boolean",
+    },
   },
   parameters: createComponentStorybookParameters({
     componentDescription:
@@ -159,6 +162,24 @@ export const Actions: Story = {
         <v-btn>Okay</v-btn>
       </template>
     `,
+  }),
+};
+
+export const Closable: Story = {
+  args: {
+    title: "Closable Card",
+    closable: true,
+  },
+  render: createStorybookRender({
+    components: { CCard },
+    template: `
+<c-card v-bind='args' class="ma-5">
+    Cards main content.
+</c-card>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: "Cards main content.",
   }),
 };
 

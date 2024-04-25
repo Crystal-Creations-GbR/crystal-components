@@ -20,6 +20,20 @@
       ></v-progress-linear>
     </template>
 
+    <!-- Close button -->
+    <div
+      v-if="closable"
+      class="position-absolute pa-4 pa-md-6"
+      style="top: 0; right: 0"
+    >
+      <v-btn
+        :icon="mdiWindowClose"
+        variant="text"
+        color="black"
+        @click="emit('close')"
+      ></v-btn>
+    </div>
+
     <v-card-title
       v-if="title"
       class="pt-0 pb-0 px-6 px-md-8 text-h6"
@@ -91,6 +105,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useSlots } from "vue";
 import { VCardText } from "vuetify/components";
+import { mdiWindowClose } from "@mdi/js";
 
 const slots = useSlots();
 
@@ -165,6 +180,13 @@ const props = withDefaults(
      * Applies specified color to the card - supports utility colors (for example `success` or `purple`) or css color (#033 or rgba(255, 0, 0, 0.5)).
      */
     color?: string;
+
+    /**
+     * If true, a close button will be added to the top right of the card.
+     *
+     * If this button is clicked, the `close` event is emitted.
+     */
+    closable?: boolean;
   }>(),
   {
     title: undefined,
@@ -243,6 +265,13 @@ onMounted(() => {
     contentScrollable.value = true;
   }
 });
+
+const emit = defineEmits<{
+  /**
+   * Event emitted when the close button is clicked.
+   */
+  (e: "close"): void;
+}>();
 </script>
 
 <style scoped lang="scss">
