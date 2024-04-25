@@ -3,6 +3,7 @@
     v-model="model"
     :width="width"
     :min-width="minWidth"
+    :height="height"
     :persistent="persistent"
     :activator="activator"
     class="c-dialog ma-2"
@@ -19,7 +20,9 @@
       :subtitle="subtitle"
       :loading="loading"
       :color="color"
+      :closable="closeButton"
       max-width=""
+      @close="model = false"
     >
       <template v-if="slots['prepend-actions']" #prepend-actions>
         <slot name="prepend-actions"></slot>
@@ -78,6 +81,11 @@ withDefaults(
     minWidth?: string;
 
     /**
+     * The height of the dialog
+     */
+    height?: string;
+
+    /**
      * Whether clicking outside the element or pressing esc key will close the dialog.
      */
     persistent?: boolean;
@@ -93,6 +101,11 @@ withDefaults(
     color?: string;
 
     /**
+     * If true, a close button will be added to the top right of the card which closes the dialog.
+     */
+    closeButton?: boolean;
+
+    /**
      * Explicitly sets the overlay’s activator.
      *
      * For more information, see https://vuetifyjs.com/en/api/v-dialog/.
@@ -105,6 +118,7 @@ withDefaults(
     subtitle: undefined,
     width: "500px",
     maxWidth: undefined,
+    height: undefined,
     minWidth: undefined,
     persistent: false,
     color: undefined,
