@@ -10,6 +10,7 @@
     :class="cardClass"
     :loading="loading"
     :color="color"
+    :disabled="disabled"
   >
     <template #loader="{ isActive }">
       <v-progress-linear
@@ -192,6 +193,13 @@ const props = withDefaults(
      * If this button is clicked, the `close` event is emitted.
      */
     closable?: boolean;
+
+    /**
+     * Removes the ability to click or target the component.
+     *
+     * This also disables all buttons including the close-button, if shown.
+     */
+    disabled?: boolean;
   }>(),
   {
     title: undefined,
