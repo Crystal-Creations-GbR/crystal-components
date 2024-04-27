@@ -8,7 +8,6 @@
     :activator="activator"
     class="c-dialog ma-2"
     scrollable
-    @update:model-value="onUpdate"
   >
     <template v-if="slots['activator']" #activator="{ props }">
       <slot name="activator" :props="props"></slot>
@@ -38,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { ComponentPublicInstance, useSlots } from "vue";
+import { ComponentPublicInstance, useSlots, watch } from "vue";
 import CCard from "../CCard.vue";
 
 const slots = useSlots();
@@ -127,13 +126,11 @@ withDefaults(
 );
 
 /**
- * Handles the update of the model-value and emits a closed event.
- *
- * @param value the new value.
+ * Watches the model to emit the `close` event when the model changes to `false`.
  */
-function onUpdate(value: boolean) {
-  if (!value) emit("close");
-}
+watch(model, () => {
+  if (!model.value) emit("close");
+});
 
 const emit = defineEmits<{
   /**
