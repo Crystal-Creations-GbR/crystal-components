@@ -54,6 +54,9 @@ const meta: Meta<typeof CCard> = {
     closable: {
       control: "boolean",
     },
+    disabled: {
+      control: "boolean",
+    },
   },
   parameters: createComponentStorybookParameters({
     componentDescription:
@@ -311,5 +314,40 @@ export const AlwaysScrollable: Story = {
   }),
   parameters: createStorybookParameters({
     slotTemplate: "Cards main content.",
+  }),
+};
+
+export const Disabled: Story = {
+  args: {
+    title: "Disabled Card with actions",
+    closable: true,
+    disabled: true,
+  },
+  render: createStorybookRender({
+    components: { CCard },
+    template: `
+<c-card v-bind='args' class="ma-5">
+  <template #prepend-actions>
+    <v-btn>Learn More</v-btn>
+  </template>
+
+  <template #actions>
+    <v-btn>Abbrechen</v-btn>
+    <v-btn>Okay</v-btn>
+  </template>
+</c-card>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: `
+      <template #prepend-actions>
+        <v-btn>Learn More</v-btn>
+      </template>
+    
+      <template #actions>
+        <v-btn>Abbrechen</v-btn>
+        <v-btn>Okay</v-btn>
+      </template>
+    `,
   }),
 };
