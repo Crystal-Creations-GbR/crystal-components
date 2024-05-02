@@ -25,7 +25,7 @@ const meta: Meta<typeof CCard> = {
     },
     mode: {
       control: "radio",
-      options: ["default", "bottom-sheet"],
+      options: ["default", "bottom-sheet", "fullscreen"],
     },
     scrollingContentVerticalPadding: {
       control: "boolean",
