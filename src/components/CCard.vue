@@ -1,6 +1,6 @@
 <template>
   <v-card
-    rounded="xl"
+    :rounded="mode === 'fullscreen' ? false : 'xl'"
     elevation="0"
     border
     :height="height"
@@ -146,7 +146,7 @@ const props = withDefaults(
     /**
      * The mode how this `CCard` is used.
      */
-    mode?: "default" | "bottom-sheet";
+    mode?: "default" | "bottom-sheet" | "fullscreen";
 
     /**
      * Whether vertical padding should be applied to the content inside the card when the content is scrollable.

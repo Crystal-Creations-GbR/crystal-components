@@ -1,12 +1,14 @@
 <template>
   <v-dialog
     v-model="model"
-    :width="width"
+    :width="fullscreen ? undefined : width"
     :min-width="minWidth"
     :height="height"
     :persistent="persistent"
+    :fullscreen="fullscreen"
     :activator="activator"
-    class="c-dialog ma-2"
+    :class="fullscreen ? '' : 'ma-2'"
+    class="c-dialog"
     scrollable
   >
     <template v-if="slots['activator']" #activator="{ props }">
@@ -20,6 +22,7 @@
       :loading="loading"
       :color="color"
       :closable="closeButton"
+      :mode="fullscreen ? 'fullscreen' : 'default'"
       max-width=""
       @close="model = false"
     >
@@ -88,6 +91,11 @@ withDefaults(
      * Whether clicking outside the element or pressing esc key will close the dialog.
      */
     persistent?: boolean;
+
+    /**
+     * Changes layout for fullscreen display.
+     */
+    fullscreen?: boolean;
 
     /**
      * Whether the loading bar should be shown or not.
