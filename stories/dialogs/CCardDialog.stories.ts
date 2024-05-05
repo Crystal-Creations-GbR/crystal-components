@@ -320,3 +320,35 @@ export const Fullscreen: Story = {
     `,
   }),
 };
+
+export const Disabled: Story = {
+  args: {
+    title: "Disabled Dialog with actions",
+    closeButton: true,
+    disabled: true,
+  },
+  render: createStorybookRender({
+    components: { CCardDialog },
+    template: `
+      <div class="d-flex justify-center align-center">
+        <v-btn class="ma-4" @click='updateModel(true)' v-show="!chromatic">Show Dialog</v-btn>
+        <c-card-dialog v-bind='args' @update:modelValue='(val) => updateModel(val)'>
+          The content of the dialog.
+
+          <template #actions>
+            <v-btn>Okay</v-btn>
+          </template>
+        </c-card-dialog>
+      </div>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: `
+      The content of the dialog.
+
+      <template #actions>
+        <v-btn>Okay</v-btn>
+      </template>
+    `,
+  }),
+};
