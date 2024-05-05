@@ -23,6 +23,7 @@
       :color="color"
       :closable="closeButton"
       :mode="fullscreen ? 'fullscreen' : 'default'"
+      :disabled="disabled"
       max-width=""
       @close="model = false"
     >
@@ -118,6 +119,13 @@ withDefaults(
      * For more information, see https://vuetifyjs.com/en/api/v-dialog/.
      */
     activator?: Element | "parent" | (string & {}) | ComponentPublicInstance;
+
+    /**
+     * Removes the ability to click or target the component.
+     *
+     * This also disables all buttons including the close-button, if shown.
+     */
+    disabled?: boolean;
   }>(),
   {
     title: undefined,
