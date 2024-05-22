@@ -351,3 +351,44 @@ export const Disabled: Story = {
     `,
   }),
 };
+
+export const TitleAppendSlot: Story = {
+  args: {
+    title: "Card",
+  },
+  render: createStorybookRender({
+    components: { CCard },
+    template: `
+<c-card v-bind='args' class="ma-5">
+  <template #title-append>
+    <v-btn
+      variant="outlined"
+      color="primary"
+    >
+      Close
+    </v-btn>
+  </template>
+
+  <template #actions>
+    <v-btn>Okay</v-btn>
+  </template>
+</c-card>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: `
+      <template #title-append>
+        <v-btn
+          variant="outlined"
+          color="primary"
+        >
+          Close
+        </v-btn>
+      </template>
+    
+      <template #actions>
+        <v-btn>Okay</v-btn>
+      </template>
+    `,
+  }),
+};
