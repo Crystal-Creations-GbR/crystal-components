@@ -27,6 +27,10 @@
       max-width=""
       @close="model = false"
     >
+      <template v-if="slots['content-full-width']" #content-full-width>
+        <slot name="content-full-width"></slot>
+      </template>
+
       <template v-if="slots['prepend-actions']" #prepend-actions>
         <slot name="prepend-actions"></slot>
       </template>
