@@ -21,13 +21,16 @@
       ></v-progress-linear>
     </template>
 
-    <!-- Close button -->
     <div
-      v-if="closable"
-      class="position-absolute pa-4 pa-md-6"
+      v-if="closable || slots['title-append']"
+      class="position-absolute pa-4 pa-md-6 d-flex align-center"
       style="top: 0; right: 0"
     >
+      <slot name="title-append"> </slot>
+
+      <!-- Close button -->
       <v-btn
+        v-if="closable"
         :icon="mdiWindowClose"
         variant="text"
         color="black"
