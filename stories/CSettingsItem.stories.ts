@@ -6,6 +6,10 @@ const meta: Meta<typeof CSettingsItem> = {
   title: "Components/SettingsItems",
   component: CSettingsItem,
   argTypes: {
+    type: {
+      control: "radio",
+      options: ["default", "switch"],
+    },
     label: {
       control: "text",
     },
@@ -64,5 +68,13 @@ export const LabelColumn: Story = {
 export const ValueOnly: Story = {
   args: {
     value: "Settings value",
+  },
+};
+
+export const TypeSwitch: Story = {
+  args: {
+    label: "Settings label",
+    labelColumns: 8,
+    type: "switch",
   },
 };
