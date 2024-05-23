@@ -2,11 +2,11 @@
   <v-list-item
     :prepend-icon="prependIcon"
     :append-icon="clickable ? mdiChevronRight : undefined"
-    :ripple="clickable"
+    :ripple="clickable || type === 'switch'"
     :to="to"
     min-height="64"
     class="px-md-8 px-5"
-    @click="emit('click')"
+    @click="click"
   >
     <div class="d-flex" :class="clickable ? '' : 'chevron-placeholder'">
       <div class="flex-grow-1">
@@ -26,6 +26,10 @@
         </v-row>
       </div>
     </div>
+
+    <template v-if="type === 'switch'" #append>
+      <v-switch v-model="managedValue" color="primary" hide-details></v-switch>
+    </template>
   </v-list-item>
 </template>
 
@@ -34,10 +38,25 @@ import { mdiChevronRight } from "@mdi/js";
 import { RouteLocationRaw } from "vue-router";
 
 /**
+ * The managed value is a value which will be managed by the settings item itself.
+ *
+ * It will be changed accordingly for some types like the `switch`.
+ */
+const managedValue = defineModel<boolean>();
+
+/**
  * This component displays a list-item to display and manage settings.
  */
-withDefaults(
+const props = withDefaults(
   defineProps<{
+    /**
+     * The type of this settings-item.
+     *
+     * Changes the behaviour of this item. If a type is used, that adds input-like functionality (like a switch),
+     * the `managedValue` as the input-value.
+     */
+    type?: "default" | "switch";
+
     /**
      * The label of this settings item.
      */
@@ -51,7 +70,7 @@ withDefaults(
     /**
      * The current set value of this option.
      */
-    value?: string | null;
+    value?: string | boolean | null;
 
     /**
      * The prepend-icon of this item.
@@ -71,6 +90,7 @@ withDefaults(
     to?: RouteLocationRaw;
   }>(),
   {
+    type: "default",
     label: undefined,
     labelColumns: 3,
     prependIcon: undefined,
@@ -86,6 +106,18 @@ const emit = defineEmits<{
    */
   (e: "click"): void;
 }>();
+
+/**
+ * Emits the click-event and changes the `managedValue`, if required.
+ */
+function click() {
+  if (props.type === "switch") {
+    managedValue.value = !managedValue.value;
+  }
+
+  // Emit event
+  emit("click");
+}
 </script>
 
 <style scoped lang="scss">
