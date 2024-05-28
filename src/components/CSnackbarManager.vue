@@ -22,6 +22,7 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       v-model="activeSnackbar.model"
       :type="activeSnackbar.type"
       :position="activeSnackbar.position"
+      :z-index="zIndex"
       @closed="showNextSnackbar"
     >
       {{ activeSnackbar.message }}
@@ -67,6 +68,11 @@ const props = defineProps<{
    * Whether newly added snackbars should successively be shown as soon as the currently active snackbar is closed or not.
    */
   successively?: boolean;
+
+  /**
+   * The z-index used for the component.
+   */
+  zIndex?: string | number;
 }>();
 
 /**
