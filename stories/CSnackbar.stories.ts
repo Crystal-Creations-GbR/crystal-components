@@ -25,6 +25,9 @@ const meta: Meta<typeof CSnackbar> = {
     timeout: {
       control: "number",
     },
+    zIndex: {
+      control: "number",
+    },
   },
   args: {
     modelValue: false,

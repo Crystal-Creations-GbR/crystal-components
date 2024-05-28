@@ -22,6 +22,7 @@ THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       :timeout="snackbarTimeout"
       :location="location"
       :color="type"
+      :z-index="zIndex"
       @update:model-value="onModelValueChange"
     >
       <slot></slot>
@@ -70,11 +71,19 @@ const props = withDefaults(
      * Timeout in milliseconds of this snackbar after which it will be hidden.
      */
     timeout?: number | "infinite" | null;
+
+    /**
+     * The z-index used for the component.
+     *
+     * Defaults to `2500` to be above dialogs (with a z-index of `2400`). (Vuetify default: `2000`)
+     */
+    zIndex?: string | number;
   }>(),
   {
     type: "error",
     location: "bottom",
     timeout: null,
+    zIndex: 2500,
   },
 );
 
