@@ -4,6 +4,7 @@
       "labels": {
         "cancel": "Abbrechen",
         "confirm": "Bestätigen",
+        "day": "Tag",
         "delete": "Löschen"
       }
     },
