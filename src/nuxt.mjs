@@ -85,6 +85,10 @@ export default defineNuxtModule({
       filePath: resolver.resolve("components/inputs/CPriceInput.vue"),
     });
     await addComponent({
+      name: "CTimeInput",
+      filePath: resolver.resolve("components/inputs/CTimeInput.vue"),
+    });
+    await addComponent({
       name: "CPrimaryTabs",
       filePath: resolver.resolve("components/CPrimaryTabs.vue"),
     });

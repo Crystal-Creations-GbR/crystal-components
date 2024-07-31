@@ -12,6 +12,7 @@ import CNavigationDivider from "./components/navigation-drawer/CNavigationDivide
 import CNavigationItem from "./components/navigation-drawer/CNavigationItem.vue";
 import CPasswordInput from "./components/inputs/CPasswordInput.vue";
 import CPriceInput from "./components/inputs/CPriceInput.vue";
+import CTimeInput from "./components/inputs/CTimeInput.vue";
 import CPrimaryTabs from "./components/CPrimaryTabs.vue";
 import CSecondaryNavigation from "./components/CSecondaryNavigation.vue";
 import CMultiOptionButton from "./components/CMultiOptionButton.vue";
@@ -32,6 +33,7 @@ export { CNavigationDivider };
 export { CNavigationItem };
 export { CPasswordInput };
 export { CPriceInput };
+export { CTimeInput };
 export { CPrimaryTabs };
 export { CSecondaryNavigation };
 export { CMultiOptionButton };
