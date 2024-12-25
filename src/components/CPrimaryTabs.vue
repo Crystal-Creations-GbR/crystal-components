@@ -10,12 +10,14 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
 /**
  * This component is a wrapper for the vuetify tabs following the material design 3 specifications for primary tabs
  *
  * Use `v-tab` components in the default slot.
  */
-withDefaults(
+const props = withDefaults(
   defineProps<{
     /**
      * Where the tabs should be aligned.
@@ -23,6 +25,13 @@ withDefaults(
      * `title` aligns the tabs with the `v-toolbar-title` component.
      */
     alignTabs?: "start" | "title" | "center" | "end";
+
+    /**
+     * The height of the tab.
+     *
+     * Defaults to `--v-tabs-height`.
+     */
+    height?: string;
 
     /**
      * Forces the selected tab to be centered.
@@ -36,10 +45,18 @@ withDefaults(
   }>(),
   {
     alignTabs: "center",
+    height: undefined,
     centerActive: true,
     showArrows: true,
   },
 );
+
+/**
+ * The computed height for the tabs including the default value, if not set.
+ */
+const tabHeight = computed(() => {
+  return props.height ?? "var(--v-tabs-height)";
+});
 </script>
 
 <style lang="scss">
@@ -54,6 +71,12 @@ withDefaults(
       border-top-left-radius: 24px;
       left: calc(50% - 15px);
     }
+  }
+
+  // Custom height
+  height: v-bind(tabHeight);
+  .v-tab.v-tab.v-btn {
+    height: v-bind(tabHeight);
   }
 }
 </style>

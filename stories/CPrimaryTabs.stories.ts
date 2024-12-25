@@ -14,6 +14,9 @@ const meta: Meta<typeof CPrimaryTabs> = {
       control: "radio",
       options: ["start", "title", "center", "end"],
     },
+    height: {
+      control: "text",
+    },
     centerActive: {
       control: "boolean",
     },
@@ -40,6 +43,29 @@ export const Default: Story = {
     <v-tab>Tab 2</v-tab>
     <v-tab>Tab 3</v-tab>
 </c-primary-tabs>
+    `,
+  }),
+  parameters: createStorybookParameters({
+    slotTemplate: `
+        <v-tab>Tab 1</v-tab>
+        <v-tab>Tab 2</v-tab>
+        <v-tab>Tab 3</v-tab>
+      `,
+  }),
+};
+
+export const Height: Story = {
+  args: {
+    height: "64px",
+  },
+  render: createStorybookRender({
+    components: { CPrimaryTabs },
+    template: `
+      <c-primary-tabs v-bind='args'>
+        <v-tab>Tab 1</v-tab>
+        <v-tab>Tab 2</v-tab>
+        <v-tab>Tab 3</v-tab>
+      </c-primary-tabs>
     `,
   }),
   parameters: createStorybookParameters({
