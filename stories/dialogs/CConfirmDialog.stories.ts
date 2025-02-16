@@ -18,6 +18,9 @@ const meta: Meta<typeof CConfirmDialog> = {
     title: {
       control: "text",
     },
+    subtitle: {
+      control: "text",
+    },
     type: {
       control: "text",
     },
@@ -74,6 +77,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: "Confirm action?",
+    subtitle:
+      "Are you sure you want to confirm this action? This cannot be undone.",
   },
 };
 

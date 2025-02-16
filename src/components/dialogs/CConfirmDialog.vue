@@ -1,10 +1,16 @@
 <template>
-  <c-card-dialog v-model="model">
+  <c-card-dialog
+    v-model="model"
+    :title="title"
+    :subtitle="subtitle"
+    :disabled="loading"
+    :persistent="loading"
+    :loading="loading"
+    title-size="normal"
+  >
     <template v-if="slots['activator']" #activator="{ props: activatorProps }">
       <slot name="activator" :props="activatorProps"></slot>
     </template>
-
-    {{ title }}
 
     <template #actions>
       <v-btn @click="model = false">
@@ -47,6 +53,11 @@ const props = withDefaults(
     title: string;
 
     /**
+     * The subtitle of the dialog.
+     */
+    subtitle?: string;
+
+    /**
      * The type of the confirm dialog defines the default label and color of the confirm button.
      *
      * Both default values can be overwritten with their respective properties `confirm-button-label` and `confirm-button-color`.
@@ -76,6 +87,7 @@ const props = withDefaults(
   }>(),
   {
     type: "confirm",
+    subtitle: undefined,
     confirmButtonLabel: undefined,
     confirmButtonColor: undefined,
     confirmButtonVariant: "tonal",
