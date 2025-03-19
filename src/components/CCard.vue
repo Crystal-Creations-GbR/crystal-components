@@ -21,29 +21,44 @@
       ></v-progress-linear>
     </template>
 
-    <div
-      v-if="closable || slots['title-append']"
-      class="position-absolute pa-4 pa-md-6 d-flex align-center"
-      style="top: 0; right: 0"
-    >
-      <slot name="title-append"> </slot>
-
-      <!-- Close button -->
-      <v-btn
-        v-if="closable"
-        :icon="mdiWindowClose"
-        variant="text"
-        color="on-surface"
-        @click="emit('close')"
-      ></v-btn>
-    </div>
-
     <v-card-title
-      v-if="title"
-      class="pt-0 pb-0 px-6 px-md-8 text-h6"
-      :class="titleClass"
+      v-if="title || slots['title-append'] || closable"
+      class="pt-0 pb-0 px-6 px-md-8 text-h6 d-flex align-center"
+      :class="vTitleClass"
     >
-      {{ title }}
+      <!-- Placeholder to make sure the title is centered if the closable icon is visible -->
+      <div
+        v-if="closable && titlePosition === 'center'"
+        class="mr-2"
+        style="width: 48px"
+      ></div>
+
+      <div
+        v-if="title || slots['title-append']"
+        class="d-flex align-center w-100"
+        :class="titleClass"
+      >
+        <div v-if="title" :class="wrapTitle ? '' : 'text-truncate'">
+          {{ title }}
+        </div>
+
+        <slot name="title-append"> </slot>
+      </div>
+
+      <template v-if="closable">
+        <!-- Placeholder -->
+        <div style="width: 48px" class="ml-2"></div>
+
+        <!-- Close button -->
+        <v-btn
+          :icon="mdiWindowClose"
+          variant="text"
+          color="on-surface"
+          class="position-absolute"
+          style="right: 20px"
+          @click="emit('close')"
+        ></v-btn>
+      </template>
     </v-card-title>
 
     <v-card-subtitle
@@ -130,7 +145,7 @@ const props = withDefaults(
     /**
      * The position of the title.
      */
-    titlePosition?: "center" | "left" | "right";
+    titlePosition?: "center" | "start" | "end";
 
     /**
      * The size of the title.
@@ -207,7 +222,7 @@ const props = withDefaults(
   }>(),
   {
     title: undefined,
-    titlePosition: "left",
+    titlePosition: "start",
     titleSize: "normal",
     wrapTitle: undefined,
     subtitle: undefined,
@@ -244,10 +259,10 @@ const cardClass = computed<string>(() => {
 });
 
 /**
- * Computes the classes for the title component.
+ * Computes the classes for the v-card-title component.
  */
-const titleClass = computed<string>(() => {
-  let classes = "text-" + props.titlePosition;
+const vTitleClass = computed<string>(() => {
+  let classes = "";
 
   if (props.titleSize && props.titleSize !== "normal")
     classes += " " + props.titleSize;
@@ -258,6 +273,17 @@ const titleClass = computed<string>(() => {
   if (scrollingEnabled.value && !props.subtitle && !slots.header)
     classes += " mb-5 mb-md-7";
   else classes += " mb-3";
+
+  return classes;
+});
+
+/**
+ * Computes the classes for the title component. (in which the title and title-append are)
+ */
+const titleClass = computed<string>(() => {
+  let classes = "justify-" + props.titlePosition;
+
+  if (!props.wrapTitle) classes += " text-truncate";
 
   return classes;
 });

@@ -15,7 +15,7 @@ const meta: Meta<typeof CCard> = {
     },
     titlePosition: {
       control: "radio",
-      options: ["center", "left", "right"],
+      options: ["center", "start", "end"],
     },
     wrapTitle: {
       control: "boolean",
@@ -70,7 +70,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     title: "Card title",
-    titlePosition: "left",
+    titlePosition: "start",
     subtitle: "Card subtitle",
     loading: false,
   },
@@ -354,18 +354,20 @@ export const Disabled: Story = {
 
 export const TitleAppendSlot: Story = {
   args: {
-    title: "Card",
+    title: "Card with a longer title",
+    closable: true,
   },
   render: createStorybookRender({
     components: { CCard },
     template: `
 <c-card v-bind='args' class="ma-5">
   <template #title-append>
+    <v-spacer></v-spacer>
     <v-btn
-      variant="outlined"
-      color="primary"
+        variant="outlined"
+        color="primary"
     >
-      Close
+      Action
     </v-btn>
   </template>
 
@@ -378,11 +380,12 @@ export const TitleAppendSlot: Story = {
   parameters: createStorybookParameters({
     slotTemplate: `
       <template #title-append>
+        <v-spacer></v-spacer>
         <v-btn
-          variant="outlined"
-          color="primary"
+            variant="outlined"
+            color="primary"
         >
-          Close
+          Action
         </v-btn>
       </template>
     
