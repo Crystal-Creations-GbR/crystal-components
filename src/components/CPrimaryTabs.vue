@@ -1,12 +1,16 @@
 <template>
-  <v-tabs
-    class="c-primary-tabs full-width"
-    :align-tabs="alignTabs"
-    :center-active="centerActive"
-    :show-arrows="showArrows"
-  >
-    <slot></slot>
-  </v-tabs>
+  <!-- This wrapping div is required to prevent an endless loop when reloading the page. See #125 -->
+  <div class="w-100">
+    <v-tabs
+      class="c-primary-tabs full-width"
+      :align-tabs="alignTabs"
+      :center-active="centerActive"
+      :show-arrows="showArrows"
+      :style="{ '--tabHeight': tabHeight }"
+    >
+      <slot></slot>
+    </v-tabs>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -73,10 +77,10 @@ const tabHeight = computed(() => {
     }
   }
 
-  // Custom height
-  height: v-bind(tabHeight);
+  // Set height of tab-bar and tabs
+  &,
   .v-tab.v-tab.v-btn {
-    height: v-bind(tabHeight);
+    height: var(--tabHeight);
   }
 }
 </style>
