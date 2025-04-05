@@ -49,6 +49,7 @@
     <v-card-subtitle
       v-if="subtitle"
       class="c-card-subtitle px-6 px-md-8 text-wrap mb-3"
+      style="white-space: pre-line !important"
     >
       {{ subtitle }}
     </v-card-subtitle>
