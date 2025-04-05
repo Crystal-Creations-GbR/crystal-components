@@ -2,6 +2,7 @@
   <!-- This wrapping div is required to prevent an endless loop when reloading the page. See #125 -->
   <div class="w-100">
     <v-tabs
+      v-bind="$attrs"
       class="c-primary-tabs full-width"
       :align-tabs="alignTabs"
       :center-active="centerActive"
@@ -15,6 +16,9 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+
+// Don't apply the attributes to the root-element (div).
+defineOptions({ inheritAttrs: false });
 
 /**
  * This component is a wrapper for the vuetify tabs following the material design 3 specifications for primary tabs
