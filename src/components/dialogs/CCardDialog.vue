@@ -3,6 +3,7 @@
     v-model="model"
     :width="fullscreen ? undefined : width"
     :min-width="minWidth"
+    :max-width="maxWidth"
     :height="height"
     :persistent="persistent"
     :fullscreen="fullscreen"
@@ -27,8 +28,8 @@
       max-width=""
       @close="model = false"
     >
-      <template v-if="slots['content-full-width']" #content-full-width>
-        <slot name="content-full-width"></slot>
+      <template v-if="slots['content-full-width']" #content-full-width="props">
+        <slot name="content-full-width" v-bind="props"></slot>
       </template>
 
       <template v-if="slots['prepend-actions']" #prepend-actions>
@@ -88,6 +89,11 @@ withDefaults(
     minWidth?: string;
 
     /**
+     * The max width of the dialog.
+     */
+    maxWidth?: string;
+
+    /**
      * The height of the dialog
      */
     height?: string;
@@ -136,9 +142,9 @@ withDefaults(
     titleSize: "large",
     subtitle: undefined,
     width: "500px",
+    minWidth: undefined,
     maxWidth: undefined,
     height: undefined,
-    minWidth: undefined,
     persistent: false,
     color: undefined,
     activator: undefined,
