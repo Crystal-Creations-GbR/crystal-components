@@ -33,7 +33,7 @@
         v-if="closable"
         :icon="mdiWindowClose"
         variant="text"
-        color="black"
+        color="on-surface"
         @click="emit('close')"
       ></v-btn>
     </div>
