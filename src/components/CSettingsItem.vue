@@ -20,15 +20,24 @@
           >
             <p>{{ label }}</p>
           </v-col>
-          <v-col class="d-flex align-center">
+          <v-col
+            class="d-flex align-center"
+            :class="valueVariant === 'subtitle' ? 'text-subtitle-2' : ''"
+          >
             <p v-if="value">{{ value }}</p>
           </v-col>
         </v-row>
       </div>
     </div>
 
-    <template v-if="type === 'switch'" #append>
-      <v-switch v-model="managedValue" color="primary" hide-details></v-switch>
+    <template v-if="type === 'switch' || slots['append']" #append>
+      <slot v-if="slots['append']" name="append"></slot>
+      <v-switch
+        v-if="type === 'switch'"
+        v-model="managedValue"
+        color="primary"
+        hide-details
+      ></v-switch>
     </template>
   </v-list-item>
 </template>
@@ -36,6 +45,9 @@
 <script setup lang="ts">
 import { mdiChevronRight } from "@mdi/js";
 import { RouteLocationRaw } from "vue-router";
+import { useSlots } from "vue";
+
+const slots = useSlots();
 
 /**
  * The managed value is a value which will be managed by the settings item itself.
@@ -73,6 +85,14 @@ const props = withDefaults(
     value?: string | boolean | null;
 
     /**
+     * How the label is displayed.
+     *
+     * - default: displays the value as the actual value of this setting.
+     * - subtitle: the value can be a longer subtitle to explain this setting.
+     */
+    valueVariant?: "default" | "subtitle";
+
+    /**
      * The prepend-icon of this item.
      */
     prependIcon?: string;
@@ -95,6 +115,7 @@ const props = withDefaults(
     labelColumns: 3,
     prependIcon: undefined,
     value: null,
+    valueVariant: undefined,
     clickable: false,
     to: undefined,
   },
