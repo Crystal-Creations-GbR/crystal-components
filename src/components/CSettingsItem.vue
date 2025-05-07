@@ -3,6 +3,7 @@
     :prepend-icon="prependIcon"
     :append-icon="clickable ? mdiChevronRight : undefined"
     :ripple="clickable || type === 'switch'"
+    :disabled="disabled"
     :to="to"
     min-height="64"
     class="px-md-8 px-5"
@@ -108,6 +109,11 @@ const props = withDefaults(
      * Denotes the target route of the link. You can find more information about the `to` prop on the vue-router documentation.
      */
     to?: RouteLocationRaw;
+
+    /**
+     * Removes the ability to click or target the component.
+     */
+    disabled?: boolean;
   }>(),
   {
     type: "default",
