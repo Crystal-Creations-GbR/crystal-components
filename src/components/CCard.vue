@@ -69,12 +69,15 @@
       {{ subtitle }}
     </v-card-subtitle>
 
-    <div v-if="slots['header']" class="mb-3">
+    <div v-if="slots['header']" :class="hasTabsHeader ? '' : 'mb-3'">
       <slot name="header" :padding="'px-6 px-md-8'"></slot>
     </div>
 
     <v-divider
-      v-if="scrollingEnabled && (title || subtitle || slots['header'])"
+      v-if="
+        (scrollingEnabled || hasTabsHeader) &&
+        (title || subtitle || slots['header'])
+      "
       class="mb-0"
     ></v-divider>
 
@@ -219,6 +222,13 @@ const props = withDefaults(
      * This also disables all buttons including the close-button, if shown.
      */
     disabled?: boolean;
+
+    /**
+     * Whether this card has tabs in the header.
+     *
+     * Will always display the divider and remove the padding to it.
+     */
+    hasTabsHeader?: boolean;
   }>(),
   {
     title: undefined,
