@@ -25,9 +25,14 @@
       :closable="closeButton"
       :mode="fullscreen ? 'fullscreen' : 'default'"
       :disabled="disabled"
+      :has-tabs-header="hasTabsHeader"
       max-width=""
       @close="model = false"
     >
+      <template v-if="slots['header']" #header="props">
+        <slot name="header" v-bind="props"></slot>
+      </template>
+
       <template v-if="slots['content-full-width']" #content-full-width="props">
         <slot name="content-full-width" v-bind="props"></slot>
       </template>
@@ -136,6 +141,13 @@ withDefaults(
      * This also disables all buttons including the close-button, if shown.
      */
     disabled?: boolean;
+
+    /**
+     * Whether this card has tabs in the header.
+     *
+     * Will always display the divider and remove the padding to it.
+     */
+    hasTabsHeader?: boolean;
   }>(),
   {
     title: undefined,
