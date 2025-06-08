@@ -98,7 +98,11 @@
 
       <!-- Full Width Content -->
       <div v-if="slots['content-full-width']">
-        <slot name="content-full-width" :padding="'px-6 px-md-8'"></slot>
+        <slot
+          name="content-full-width"
+          :padding="' px-6 px-md-8'"
+          :padding-bottom="' pb-6 pb-md-8'"
+        ></slot>
       </div>
     </v-card-text>
 
