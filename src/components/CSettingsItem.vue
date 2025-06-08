@@ -12,22 +12,24 @@
     <div class="d-flex" :class="clickable ? '' : 'chevron-placeholder'">
       <div class="flex-grow-1">
         <!-- Label and value -->
-        <v-row no-gutters>
-          <v-col
-            v-if="label"
-            :sm="labelColumns"
-            cols="12"
-            class="d-flex align-center text-subtitle-2 text-grey-darken-1 mr-2"
-          >
-            <p>{{ label }}</p>
-          </v-col>
-          <v-col
-            class="d-flex align-center"
-            :class="valueVariant === 'subtitle' ? 'text-subtitle-2' : ''"
-          >
-            <p v-if="value">{{ value }}</p>
-          </v-col>
-        </v-row>
+        <slot>
+          <v-row no-gutters>
+            <v-col
+              v-if="label"
+              :sm="labelColumns"
+              cols="12"
+              class="d-flex align-center text-subtitle-2 text-grey-darken-1 mr-2"
+            >
+              <p>{{ label }}</p>
+            </v-col>
+            <v-col
+              class="d-flex align-center"
+              :class="valueVariant === 'subtitle' ? 'text-subtitle-2' : ''"
+            >
+              <p v-if="value">{{ value }}</p>
+            </v-col>
+          </v-row>
+        </slot>
       </div>
     </div>
 
@@ -59,6 +61,10 @@ const managedValue = defineModel<boolean>();
 
 /**
  * This component displays a list-item to display and manage settings.
+ *
+ * Slots:
+ * - default: this slot replaces the default label and value
+ * - append: this appends to the end of the item (replaces the chevron)
  */
 const props = withDefaults(
   defineProps<{
