@@ -26,6 +26,8 @@
       :mode="fullscreen ? 'fullscreen' : 'default'"
       :disabled="disabled"
       :has-tabs-header="hasTabsHeader"
+      :force-scroll="forceScroll"
+      :scrolling-content-vertical-padding="scrollingContentVerticalPadding"
       max-width=""
       @close="model = false"
     >
@@ -106,6 +108,13 @@ withDefaults(
     height?: string;
 
     /**
+     * Whether vertical padding should be applied to the content inside the card when the content is scrollable.
+     *
+     * Defaults to `true`.
+     */
+    scrollingContentVerticalPadding?: boolean;
+
+    /**
      * Whether clicking outside the element or pressing esc key will close the dialog.
      */
     persistent?: boolean;
@@ -119,6 +128,13 @@ withDefaults(
      * Whether the loading bar should be shown or not.
      */
     loading?: boolean;
+
+    /**
+     * If true, the card will always be in scrollable mode.
+     *
+     * This adds the dividers and always shows the scroll bar.
+     */
+    forceScroll?: boolean;
 
     /**
      * Applies specified color to the card - supports utility colors (for example `success` or `purple`) or css color (#033 or rgba(255, 0, 0, 0.5)).
@@ -159,6 +175,7 @@ withDefaults(
     minWidth: undefined,
     maxWidth: undefined,
     height: undefined,
+    scrollingContentVerticalPadding: true,
     persistent: false,
     color: undefined,
     activator: undefined,
