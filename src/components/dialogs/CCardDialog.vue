@@ -45,7 +45,9 @@
         <slot name="actions"></slot>
       </template>
 
-      <slot></slot>
+      <template v-if="slots['default']" #default>
+        <slot name="default"></slot>
+      </template>
     </c-card>
   </v-dialog>
 </template>
