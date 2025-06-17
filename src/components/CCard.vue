@@ -113,7 +113,8 @@
 
     <v-card-actions
       v-if="slots['actions'] || slots['prepend-actions']"
-      class="mb-3 px-2 px-md-6 d-flex flex-wrap justify-space-between"
+      class="d-flex flex-wrap justify-space-between"
+      :class="actionsDensity === 'compact' ? 'mb-1 px-1' : 'mb-3 px-2 px-md-6'"
     >
       <div v-if="slots['prepend-actions']">
         <slot name="prepend-actions"></slot>
@@ -233,6 +234,11 @@ const props = withDefaults(
      * Will always display the divider and remove the padding to it.
      */
     hasTabsHeader?: boolean;
+
+    /**
+     * The density of the actions-slot.
+     */
+    actionsDensity?: "default" | "compact";
   }>(),
   {
     title: undefined,
@@ -246,6 +252,7 @@ const props = withDefaults(
     width: "100%",
     maxWidth: "850px",
     color: undefined,
+    actionsDensity: "default",
   },
 );
 
