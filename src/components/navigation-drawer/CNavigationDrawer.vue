@@ -53,6 +53,7 @@ watch(drawer, () => {
     showDrawer.value = drawer.value;
     rail.value = false;
   } else {
+    showDrawer.value = true;
     rail.value = !drawer.value;
   }
 });
