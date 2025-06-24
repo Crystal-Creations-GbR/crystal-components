@@ -72,7 +72,7 @@ type ButtonData = {
   /**
    * Emitted when the user clicks on this button.
    */
-  onClick?: () => {};
+  onClick?: () => void;
 
   /**
    * Denotes the target route of the link. You can find more information about the `to` prop on the vue-router documentation.
