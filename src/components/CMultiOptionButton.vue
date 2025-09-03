@@ -1,5 +1,5 @@
 <template>
-  <v-menu :target="buttonGroup">
+  <v-menu v-if="buttons.length > 1" :target="buttonGroup">
     <template #activator="{ props: activatorProps }">
       <v-btn-group
         ref="buttonGroup"
@@ -13,6 +13,8 @@
           :to="primaryButton.to"
           :disabled="disabled || loading"
           :loading="loading"
+          :type="primaryButton.type"
+          :form="primaryButton.form"
           @click="primaryButton.onClick"
         >
           {{ primaryButton.label }}
@@ -41,6 +43,19 @@
       </v-list-item>
     </v-list>
   </v-menu>
+
+  <v-btn
+    v-else
+    :to="primaryButton.to"
+    :disabled="disabled || loading"
+    :loading="loading"
+    :type="primaryButton.type"
+    :form="primaryButton.form"
+    variant="flat"
+    @click="primaryButton.onClick"
+  >
+    {{ primaryButton.label }}
+  </v-btn>
 </template>
 
 <script setup lang="ts">
@@ -56,7 +71,7 @@ const buttonGroup = ref();
 /**
  * Data of a button to display.
  */
-type ButtonData = {
+export type CMultiOptionButtonData = {
   /**
    * The key of this button.
    *
@@ -68,6 +83,18 @@ type ButtonData = {
    * The label of this button.
    */
   label: string;
+
+  /**
+   * A special type of the button.
+   */
+  type?: string | "submit";
+
+  /**
+   * The name of a form which this button could submit on press.
+   *
+   * Requires the `type` to be `submit`.
+   */
+  form?: string;
 
   /**
    * Emitted when the user clicks on this button.
@@ -90,7 +117,7 @@ const props = withDefaults(
      *
      * Use `primaryButton` with the buttons key to decide which button will be chosen to be the primary button.
      */
-    buttons: ButtonData[];
+    buttons: CMultiOptionButtonData[];
 
     /**
      * The key of the primary button to use.
@@ -134,7 +161,7 @@ const props = withDefaults(
 /**
  * Computes the primary button in the list of buttons.
  */
-const primaryButton = computed<ButtonData>(() => {
+const primaryButton = computed<CMultiOptionButtonData>(() => {
   const primary = props.buttons.find(
     (button) => button.key === props.primaryButton,
   );
@@ -145,7 +172,7 @@ const primaryButton = computed<ButtonData>(() => {
 /**
  * Computes the additional buttons to show in the popup menu.
  */
-const additionalButtons = computed<ButtonData[]>(() => {
+const additionalButtons = computed<CMultiOptionButtonData[]>(() => {
   const primary = primaryButton.value;
 
   return props.buttons.filter((button) => button.key !== primary.key);
