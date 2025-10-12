@@ -5,13 +5,11 @@
     :class="rail ? 'rail' : ''"
     rail-width="80"
     mobile-breakpoint="md"
-    class="c-navigation-drawer rounded-xl"
+    class="c-navigation-drawer"
   >
     <div class="d-flex flex-column" style="height: 100%">
       <!-- Branding -->
-      <v-list v-if="slots['branding']" nav class="my-3 ml-1">
-        <slot name="branding"></slot>
-      </v-list>
+      <slot name="branding"></slot>
 
       <div
         class="d-flex flex-column overflow-x-hidden overflow-y-auto"
