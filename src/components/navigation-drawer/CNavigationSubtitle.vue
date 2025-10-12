@@ -1,6 +1,6 @@
 <template>
   <div
-    class="c-navigation-subtitle mb-3 ml-5 text-grey-darken-2 font-weight-bold"
+    class="c-navigation-subtitle mb-1 ml-5 text-grey-darken-2 font-weight-bold"
     :class="classes"
   >
     {{ title }}
@@ -52,7 +52,7 @@ const props = withDefaults(
 }
 
 .v-list .c-navigation-subtitle:not(:first-child) {
-  margin-top: 16px;
+  margin-top: 4px;
 }
 
 // When used in navigation drawer, hide it on rail mode
