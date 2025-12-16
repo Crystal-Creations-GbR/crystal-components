@@ -18,11 +18,11 @@
   },
   "keywords": [
     "vuetify",
-    "crystal-creations",
+    "servely",
     "components"
   ],
-  "homepage": "https://github.com/Crystal-Creations-GbR/crystal-components",
-  "bugs": "https://github.com/Crystal-Creations-GbR/crystal-components/issues",
+  "homepage": "https://github.com/servely/crystal-components",
+  "bugs": "https://github.com/servely/crystal-components/issues",
   "files": [
     "dist",
     "src"
@@ -42,7 +42,7 @@
       "default": "./src/nuxt.mjs"
     }
   },
-  "repository": "https://github.com/Crystal-Creations-GbR/crystal-components",
+  "repository": "https://github.com/servely/crystal-components",
   "peerDependencies": {
     "@mdi/js": "^7.4.47",
     "vue": "^3.0.0",
