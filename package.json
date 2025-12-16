@@ -2,9 +2,9 @@
   "name": "@crystal-creations/crystal-components",
   "version": "1.0.0-beta.43",
   "type": "module",
-  "author": "Crystal Creations GbR and Johannes Huther",
+  "author": "Servely UG (haftungsbeschränkt)",
   "license": "MIT",
-  "description": "A vuetify based component library from crystal creations",
+  "description": "A vuetify based component library from Servely",
   "scripts": {
     "lint": "eslint src --max-warnings 0",
     "semantic-release": "semantic-release",
