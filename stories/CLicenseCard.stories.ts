@@ -9,7 +9,7 @@ const meta: Meta<typeof CLicenseCard> = {
     softwareInfo: {
       name: "@crystal-creations/crystal-components",
       version: "v1.0.0",
-      author: "Crystal Creations GbR and Johannes Huther",
+      author: "Servely UG (haftungsbeschränkt)",
       repositoryLink: "https://github.com/servely/crystal-components",
       notice: "MIT",
     },
@@ -37,7 +37,7 @@ export const NoLink: Story = {
     softwareInfo: {
       name: "@crystal-creations/crystal-components",
       version: "v1.0.0",
-      author: "Crystal Creations GbR and Johannes Huther",
+      author: "Servely UG (haftungsbeschränkt)",
       notice: "MIT",
     },
   },
@@ -48,9 +48,10 @@ export const LongLicense: Story = {
     softwareInfo: {
       name: "@crystal-creations/crystal-components",
       version: "v1.0.0",
-      author: "Crystal Creations GbR and Johannes Huther",
+      author: "Servely UG (haftungsbeschränkt)",
       repositoryLink: "https://github.com/servely/crystal-components",
       notice:
+        "Copyright (c) 2025 by Servely UG (haftungsbeschränkt)\n" +
         "Copyright (c) 2024 by Crystal Creations GbR and Johannes Huther\n" +
         "\n" +
         "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and\n" +

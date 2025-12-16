@@ -1,4 +1,5 @@
 <!--
+Copyright (c) 2025 by Servely UG (haftungsbeschränkt)
 Copyright (c) 2024 by Crystal Creations GbR and Johannes Huther
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
