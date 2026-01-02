@@ -25,6 +25,7 @@
       v-if="title || slots['title-append'] || closable"
       class="pt-0 pb-0 px-6 px-md-8 text-h6 d-flex align-center"
       :class="vTitleClass"
+      style="min-height: 30px"
     >
       <!-- Placeholder to make sure the title is centered if the closable icon is visible -->
       <div
