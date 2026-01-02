@@ -1,6 +1,5 @@
 <template>
   <v-card
-    :rounded="mode === 'fullscreen' ? false : 'xl'"
     elevation="0"
     border
     :height="height"
@@ -11,6 +10,9 @@
     :loading="loading"
     :color="color"
     :disabled="disabled"
+    :style="{
+      borderRadius: mode === 'fullscreen' ? '0 !important' : '16px !important',
+    }"
   >
     <template #loader="{ isActive }">
       <v-progress-linear
