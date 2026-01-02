@@ -28,6 +28,7 @@
       :has-tabs-header="hasTabsHeader"
       :force-scroll="forceScroll"
       :scrolling-content-vertical-padding="scrollingContentVerticalPadding"
+      :wrap-title="wrapTitle"
       max-width=""
       @close="model = false"
     >
@@ -81,6 +82,11 @@ withDefaults(
      * The size of the title.
      */
     titleSize?: "normal" | "large";
+
+    /**
+     * Whether the title should wrap.
+     */
+    wrapTitle?: boolean;
 
     /**
      * The subtitle of the dialog.
