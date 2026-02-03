@@ -348,7 +348,8 @@ const emit = defineEmits<{
 </script>
 
 <style scoped lang="scss">
-@import "vuetify/lib/styles/settings/variables";
+@use "vuetify/lib/styles/settings/variables";
+@use "sass:map";
 
 .c-card {
   &.c-card--variant--bottom-sheet {
@@ -365,11 +366,11 @@ const emit = defineEmits<{
   .v-card-title.large {
     line-height: normal;
 
-    @media (max-width: map-get($grid-breakpoints, "md")) {
+    @media (max-width: map.get(variables.$grid-breakpoints, "md")) {
       font-size: 26px !important;
     }
 
-    @media (min-width: map-get($grid-breakpoints, "md")) {
+    @media (min-width: map.get(variables.$grid-breakpoints, "md")) {
       font-size: 30px !important;
     }
   }
