@@ -100,13 +100,13 @@
       </div>
 
       <!-- Full Width Content -->
-      <div v-if="slots['content-full-width']">
+      <template v-if="slots['content-full-width']">
         <slot
           name="content-full-width"
           :padding="' px-6 px-md-8'"
           :padding-bottom="' pb-6 pb-md-8'"
         ></slot>
-      </div>
+      </template>
     </v-card-text>
 
     <v-divider
