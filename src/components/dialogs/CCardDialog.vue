@@ -29,6 +29,7 @@
       :force-scroll="forceScroll"
       :scrolling-content-vertical-padding="scrollingContentVerticalPadding"
       :wrap-title="wrapTitle"
+      :no-content-top-padding="noContentTopPadding"
       max-width=""
       @close="model = false"
     >
@@ -172,6 +173,13 @@ withDefaults(
      * Will always display the divider and remove the padding to it.
      */
     hasTabsHeader?: boolean;
+
+    /**
+     * If true, removes the top padding of the card content area.
+     *
+     * Useful when using the `content-full-width` slot with full-height content.
+     */
+    noContentTopPadding?: boolean;
   }>(),
   {
     title: undefined,

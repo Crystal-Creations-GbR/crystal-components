@@ -88,7 +88,9 @@
       ref="cardTextComponent"
       class="ma-0 px-0"
       :class="
-        scrollingContentVerticalPadding && scrollingEnabled
+        scrollingContentVerticalPadding &&
+        scrollingEnabled &&
+        !noContentTopPadding
           ? 'pt-4 pb-0'
           : 'py-0'
       "
@@ -242,6 +244,13 @@ const props = withDefaults(
      * The density of the actions-slot.
      */
     actionsDensity?: "default" | "compact";
+
+    /**
+     * If true, removes the top padding of the card content area.
+     *
+     * Useful when using the `content-full-width` slot with full-height content.
+     */
+    noContentTopPadding?: boolean;
   }>(),
   {
     title: undefined,
@@ -256,6 +265,7 @@ const props = withDefaults(
     maxWidth: "850px",
     color: undefined,
     actionsDensity: "default",
+    noContentTopPadding: false,
   },
 );
 
