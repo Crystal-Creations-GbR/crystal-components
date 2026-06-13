@@ -16,23 +16,27 @@
     @click="onFocus"
     @keydown="onKeydown"
   >
-    <template v-if="isNextDay" #append-inner>
-      <div
-        class="font-weight-bold position-absolute text-caption"
-        style="top: 5px; right: 5px"
-      >
-        +1 {{ i18n.t("crystal_components.common.labels.day") }}
-      </div>
+    <template v-if="slots['append-inner'] || isNextDay" #append-inner>
+      <slot name="append-inner">
+        <div
+          v-if="isNextDay"
+          class="font-weight-bold position-absolute text-caption"
+          style="top: 5px; right: 5px"
+        >
+          +1 {{ i18n.t("crystal_components.common.labels.day") }}
+        </div>
+      </slot>
     </template>
   </v-text-field>
 </template>
 
 <script setup lang="ts">
 import { mdiClockOutline } from "@mdi/js";
-import { ref, watch, nextTick } from "vue";
+import { ref, watch, nextTick, useSlots } from "vue";
 import { useI18n } from "vue-i18n";
 
 const i18n = useI18n();
+const slots = useSlots();
 
 /**
  * The currently entered time.
