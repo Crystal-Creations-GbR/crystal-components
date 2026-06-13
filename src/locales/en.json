@@ -4,6 +4,7 @@
       "labels": {
         "cancel": "Cancel",
         "confirm": "Confirm",
+        "day": "Day",
         "delete": "Delete"
       }
     },
