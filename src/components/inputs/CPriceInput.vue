@@ -45,7 +45,7 @@ watch(model, () => updateFieldValue(), { immediate: true });
  *
  * The format of the price will always be `x,xx`.
  */
-withDefaults(
+const props = withDefaults(
   defineProps<{
     /**
      * The label of this field.
@@ -73,6 +73,11 @@ withDefaults(
      * The rules to use to validate the password.
      */
     rules: ((password: string) => true | string)[];
+
+    /**
+     * Whether 0 is a valid price value.
+     */
+    allowZero?: boolean;
   }>(),
   { variant: "outlined" },
 );
@@ -96,8 +101,12 @@ function parsePrice(value?: string): number | undefined {
   // Parse float to remove leading 0s
   const floatVal: number = parseFloat(value);
 
-  if (isNaN(floatVal) || floatVal === 0) {
+  if (isNaN(floatVal)) {
     return undefined;
+  }
+
+  if (floatVal === 0) {
+    return props.allowZero ? 0 : undefined;
   }
 
   return floatVal / 100;
@@ -111,11 +120,12 @@ function parsePrice(value?: string): number | undefined {
  * Also supports database formats like `12` to be parsed to `12,00` instead of `0,12`.
  */
 function updateFieldValue(): void {
-  fieldValue.value = model.value
-    ? model.value.toLocaleString(i18n.locale.value, {
-        minimumFractionDigits: 2,
-      })
-    : undefined;
+  fieldValue.value =
+    model.value != null
+      ? model.value.toLocaleString(i18n.locale.value, {
+          minimumFractionDigits: 2,
+        })
+      : undefined;
 }
 
 /**
