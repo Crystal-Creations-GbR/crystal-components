@@ -7,6 +7,7 @@
       class="mb-0 full-width py-2 my-1"
       min-height="unset"
       rounded="lg"
+      base-color="grey-darken-3"
     >
     </v-list-item>
   </div>
@@ -38,4 +39,12 @@ defineProps<{
 }>();
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.c-navigation-item {
+  .v-list-item {
+    .v-list-item-title {
+      font-weight: 700;
+    }
+  }
+}
+</style>

@@ -79,6 +79,14 @@ const rail = ref<boolean>(false);
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
 
+  // Hide scrollbar, but let it scroll
+  .overflow-y-auto {
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Edge */
+    }
+  }
+
   .c-navigation-drawer-items {
     .v-list-item {
       border-radius: 24px;

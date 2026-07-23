@@ -1,9 +1,9 @@
 <template>
   <div
-    class="c-navigation-subtitle mb-1 ml-5 text-grey-darken-2 font-weight-bold"
+    class="c-navigation-subtitle mb-1 ml-5 text-grey-darken-1 font-weight-black"
     :class="classes"
   >
-    {{ title }}
+    {{ title.toUpperCase() }}
   </div>
 </template>
 
@@ -15,7 +15,9 @@ const classes = computed(() => {
     ? "text-subtitle-2"
     : props.size === "large"
       ? "text-title"
-      : "";
+      : props.size === "small"
+        ? "text-caption"
+        : "";
 });
 
 /**
@@ -33,7 +35,7 @@ const props = withDefaults(
     /**
      * The size of the subtitle
      */
-    size?: "normal" | "large";
+    size?: "normal" | "large" | "small";
   }>(),
   {
     size: "large",
@@ -48,6 +50,9 @@ const props = withDefaults(
   }
   &.text-title {
     height: 25px;
+  }
+  &.text-caption {
+    height: 18px;
   }
 }
 
