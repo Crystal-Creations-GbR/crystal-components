@@ -6,6 +6,8 @@
     rail-width="80"
     mobile-breakpoint="md"
     class="c-navigation-drawer"
+    color="background"
+    floating
   >
     <div class="d-flex flex-column" style="height: 100%">
       <!-- Branding -->
